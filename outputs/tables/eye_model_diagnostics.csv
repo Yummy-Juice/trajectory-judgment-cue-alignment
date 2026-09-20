@@ -1,0 +1,5 @@
+﻿model,n,formula_index,formula,converged,singular,pearson_dispersion,residual_skew,abs_resid_fitted_cor,fallback_reason
+eye_fixation_time_ratio_logit_lmm,1412,3,fixation_time_ratio_logit ~ condition * region + (1 | subject),True,True,,-7.79129389707588e-16,-1.84928319103143e-17,Full/uncorrelated random structure was singular or non-convergent; retained the first acceptable fallback.
+eye_total_fixation_time_log1p_lmm,1412,3,total_fixation_time_log1p ~ condition * region + (1 | subject),True,False,,-1.20861135883279,-0.399571338086077,Full/uncorrelated random structure was singular or non-convergent; retained the first acceptable fallback.
+eye_fixation_count_log1p_lmm,1412,3,fixation_count_log1p ~ condition * region + (1 | subject),True,False,,-1.35152207232896,-0.370742771062351,Full/uncorrelated random structure was singular or non-convergent; retained the first acceptable fallback.
+eye_mean_fixation_time_log1p_lmm,1412,3,mean_fixation_time_log1p ~ condition * region + (1 | subject),True,False,,0.966646027960597,0.429003536295285,Full/uncorrelated random structure was singular or non-convergent; retained the first acceptable fallback.

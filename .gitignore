@@ -1,0 +1,12 @@
+# Rebuildable local analysis products
+cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+*.tmp
+*.lock
+~$*

@@ -1,0 +1,9 @@
+﻿model,n,formula_index,formula,converged,singular,pearson_dispersion,residual_skew,fallback_reason,abs_resid_fitted_cor
+accuracy_glmm,24829,1,correct ~ condition + velocity_f + size_pair + target_f + trial_c +      trial_c2 + condition:velocity_f + condition:size_pair + (1 +      condition | subject),True,False,0.932355589530701,-0.740726077991145,,
+answer_rt_lmm,24829,1,log_answer_rt ~ condition + velocity_f + size_pair + target_f +      trial_c + trial_c2 + condition:velocity_f + condition:size_pair +      (1 + condition | subject),True,False,,0.284955251367794,,0.0188200665100882
+confidence_rt_lmm,24615,1,log_confidence_rt ~ condition + velocity_f + size_pair + target_f +      trial_c + trial_c2 + condition:velocity_f + condition:size_pair +      (1 + condition | subject),True,False,,-0.853355531438128,,-0.112114888742945
+confidence_clmm,24615,1,confidence_ord ~ condition + velocity_f + size_pair + target_f +      trial_c + trial_c2 + condition:velocity_f + condition:size_pair +      (1 + condition | subject),True,,,,,
+confidence_accuracy_coupling_glmm,24615,1,correct ~ condition * confidence_within + confidence_between +      velocity_f + size_pair + target_f + trial_c + trial_c2 +      (1 + condition | subject),True,False,0.950960794053934,-0.727582216284436,,
+confidence_bias_clmm,24615,1,confidence_ord ~ condition * correct_f + velocity_f + size_pair +      target_f + trial_c + trial_c2 + (1 + condition | subject),True,,,,,
+accuracy_occlusion_sensitivity_glmm,24829,1,correct ~ condition + occlusion_hidden_c + size_pair + target_f +      trial_c + trial_c2 + condition:occlusion_hidden_c + (1 +      condition | subject),True,False,0.932212470482853,-0.736574705524738,,
+rt_occlusion_sensitivity_lmm,24829,1,log_answer_rt ~ condition + occlusion_hidden_c + size_pair +      target_f + trial_c + trial_c2 + condition:occlusion_hidden_c +      (1 + condition | subject),True,False,,0.282862182962328,,0.0174654184848357

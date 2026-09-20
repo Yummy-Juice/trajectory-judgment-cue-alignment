@@ -1,0 +1,9 @@
+﻿model,term,label,effect_type,ratio,ci_low,ci_high,p,contrast
+accuracy_glmm,conditionzero_gravity,Accuracy,odds ratio,0.680855492109347,0.523700071280241,0.885171162956361,0.0040920051298387,Zero gravity / gravity
+answer_rt_lmm,conditionzero_gravity,Decision RT,time ratio,0.9585470435403551,0.9202940329208069,0.9983900816610218,0.0415956296611189,Zero gravity / gravity
+confidence_rt_lmm,conditionzero_gravity,Confidence RT,time ratio,1.0605244549744812,0.9985201717762953,1.1263789669848518,0.0558993548801041,Zero gravity / gravity
+confidence_clmm,conditionzero_gravity,Confidence level,odds ratio,0.550021950428623,0.407311357845905,0.742734372921066,9.59295755933918e-05,Zero gravity / gravity
+confidence_accuracy_coupling_glmm,conditionzero_gravity:confidence_within,"Confidence and accuracy
+coupling",odds ratio,0.909576652695349,0.852719870751942,0.970224472896267,0.004003763462285,Zero gravity / gravity
+confidence_bias_clmm,conditionzero_gravity:correct_f1,"Correct/error confidence
+separation",odds ratio,0.93954966591565,0.815120025669951,1.08297373015302,0.389638333559766,Zero gravity / gravity

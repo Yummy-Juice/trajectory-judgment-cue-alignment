@@ -1,0 +1,4 @@
+﻿condition,dyad,estimate,ci_low,ci_high,n_high,n_low,fdr_p,delta_definition
+zero_gravity,ball_MED->position_LONG,0.006587914670704551,0.0024282940555635053,0.010807858715357296,61,60,0.0213290675198293,low_AUC_rate_minus_high_AUC_rate
+zero_gravity,ball_MED->position_MED,0.006805090275426213,0.002642618971576972,0.011105836022531264,61,60,0.0213290675198293,low_AUC_rate_minus_high_AUC_rate
+zero_gravity,position_MED->ball_MED,0.00719295508888473,0.0023686334934703143,0.011972045415522202,61,60,0.0213290675198293,low_AUC_rate_minus_high_AUC_rate

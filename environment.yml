@@ -1,0 +1,11 @@
+name: pbr-eye-metacognition
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - r-base=4.4
+  - r-lme4=1.1_35.3
+  - r-ordinal=2023.12_4
+  - pip:
+      - -r requirements.txt

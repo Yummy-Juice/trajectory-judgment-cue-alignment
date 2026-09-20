@@ -1,0 +1,8 @@
+{
+  "matched": 393,
+  "behavior_included": 354,
+  "auc_included": 351,
+  "eye_included": 353,
+  "spam_included": 269,
+  "significant_dsm_fdr": 3
+}

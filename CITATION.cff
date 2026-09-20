@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite it using the metadata below."
+title: "Trajectory Judgment Cue-Alignment Replication Package"
+abstract: "Reproducible behavioral and eye-tracking analyses for trajectory judgments across gravity-consistent and zero-gravity cue contexts."
+type: software
+authors:
+  - family-names: Wang
+    given-names: Yijie
+  - family-names: Su
+    given-names: Lai
+  - family-names: Lu
+    given-names: Xinlian
+  - family-names: Zhong
+    given-names: Wenjing
+  - family-names: Jiang
+    given-names: Xuelei
+  - family-names: Tang
+    given-names: Weicai
+  - family-names: Xu
+    given-names: Fenggang
+  - family-names: Jiang
+    given-names: Changhua
+  - family-names: Wang
+    given-names: Chunhui
+  - family-names: Wang
+    given-names: Bo
+  - family-names: Hu
+    given-names: Luming
+  - family-names: Chen
+    given-names: Shanguang
+  - family-names: Xiao
+    given-names: Yi
+version: 1.0.0
+date-released: 2026-09-20
+license: MIT
+repository-code: "https://github.com/Yummy-Juice/trajectory-judgment-cue-alignment"

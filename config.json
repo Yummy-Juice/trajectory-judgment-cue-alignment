@@ -1,0 +1,28 @@
+{
+  "project_title": "PB&R revision analysis: behavior, metacognition, gaze allocation, and scan paths",
+  "random_seed": 20260713,
+  "conditions": ["gravity", "zero_gravity"],
+  "behavior_qc": {
+    "minimum_valid_trials_per_condition": 24,
+    "minimum_correct_trials_per_condition": 3,
+    "minimum_error_trials_per_condition": 3
+  },
+  "auc_qc": {
+    "minimum_confidence_trials_per_condition": 24,
+    "minimum_correct_trials_per_condition": 3,
+    "minimum_error_trials_per_condition": 3
+  },
+  "eye_qc": {
+    "primary_non_gap_coverage": 0.50,
+    "sensitivity_non_gap_coverage": [0.40, 0.60],
+    "minimum_fixation_events_per_condition": 10,
+    "maximum_gap_multiplier": 2.5
+  },
+  "spam_dsm_qc": {
+    "dyad_total_sd_cutoff": 2.0,
+    "permutations": 5000,
+    "fdr_alpha": 0.05
+  },
+  "rt_sensitivity_ms": [200, 5000],
+  "figure_dpi": 600
+}

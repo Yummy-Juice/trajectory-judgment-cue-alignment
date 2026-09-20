@@ -1,0 +1,108 @@
+﻿variable,response,count,proportion
+q01_original_q02_rules_understanding,Somewhat matches,99,0.34615384615384615
+q01_original_q02_rules_understanding,Neutral,74,0.25874125874125875
+q01_original_q02_rules_understanding,Strongly matches,67,0.23426573426573427
+q01_original_q02_rules_understanding,Somewhat does not match,30,0.1048951048951049
+q01_original_q02_rules_understanding,Strongly does not match,16,0.055944055944055944
+q02_original_q02_task_engagement,Somewhat matches,141,0.493006993006993
+q02_original_q02_task_engagement,Strongly matches,85,0.2972027972027972
+q02_original_q02_task_engagement,Neutral,49,0.17132867132867133
+q02_original_q02_task_engagement,Somewhat does not match,9,0.03146853146853147
+q02_original_q02_task_engagement,Strongly does not match,2,0.006993006993006993
+q03_original_q02_non_target_ball_attention,Somewhat does not match,97,0.33916083916083917
+q03_original_q02_non_target_ball_attention,Neutral,68,0.23776223776223776
+q03_original_q02_non_target_ball_attention,Somewhat matches,65,0.22727272727272727
+q03_original_q02_non_target_ball_attention,Strongly does not match,40,0.13986013986013987
+q03_original_q02_non_target_ball_attention,Strongly matches,16,0.055944055944055944
+q04_original_q02_ball_size_attention,Somewhat matches,122,0.42657342657342656
+q04_original_q02_ball_size_attention,Strongly matches,107,0.3741258741258741
+q04_original_q02_ball_size_attention,Neutral,37,0.12937062937062938
+q04_original_q02_ball_size_attention,Somewhat does not match,12,0.04195804195804196
+q04_original_q02_ball_size_attention,Strongly does not match,8,0.027972027972027972
+q05_original_q03_harder_condition,Zero gravity,219,0.7657342657342657
+q05_original_q03_harder_condition,Gravity,67,0.23426573426573427
+q06_original_q04_response_strategy,Answer quickly but risk errors,196,0.6853146853146853
+q06_original_q04_response_strategy,Take more time to ensure accuracy,90,0.3146853146853147
+q07_original_q13_gravity_understanding,3D motion after collision with downward gravitational acceleration; downward gravity should be considered,246,0.8601398601398601
+q07_original_q13_gravity_understanding,"2D plane motion after collision, like billiards",26,0.09090909090909091
+q07_original_q13_gravity_understanding,3D motion after collision under zero or microgravity; downward gravity need not be considered,10,0.03496503496503497
+q07_original_q13_gravity_understanding,Abstract motion unrelated to a physical scene,4,0.013986013986013986
+q08_original_q14_zero_gravity_understanding,3D motion after collision under zero or microgravity; downward gravity need not be considered,204,0.7132867132867133
+q08_original_q14_zero_gravity_understanding,"2D plane motion after collision, like billiards",58,0.20279720279720279
+q08_original_q14_zero_gravity_understanding,Abstract motion unrelated to a physical scene,13,0.045454545454545456
+q08_original_q14_zero_gravity_understanding,3D motion after collision with downward gravitational acceleration; downward gravity should be considered,11,0.038461538461538464
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration|Relationship between the two ball sizes,36,0.1258741258741259
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration|Post-collision motion trend,27,0.0944055944055944
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend|Relationship between the two ball sizes,26,0.09090909090909091
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Post-collision motion trend|Relationship between the two ball sizes,26,0.09090909090909091
+q09_original_q15_judgment_basis,Post-collision motion trend|Candidate landing positions and distance|Relationship between the two ball sizes,16,0.055944055944055944
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Candidate landing positions and distance|Relationship between the two ball sizes,15,0.05244755244755245
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Relationship between the two ball sizes,10,0.03496503496503497
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Post-collision motion trend|Candidate landing positions and distance,10,0.03496503496503497
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Candidate landing positions and distance|Relationship between the two ball sizes,7,0.024475524475524476
+q09_original_q15_judgment_basis,Post-collision motion trend|Relationship between the two ball sizes,7,0.024475524475524476
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration|Candidate landing positions and distance,7,0.024475524475524476
+q09_original_q15_judgment_basis,Downward gravity or acceleration,7,0.024475524475524476
+q09_original_q15_judgment_basis,Post-collision motion trend|Relationship between the two ball sizes|Intuition or guess,6,0.02097902097902098
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Post-collision motion trend,5,0.017482517482517484
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend|Candidate landing positions and distance,5,0.017482517482517484
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Relationship between the two ball sizes,4,0.013986013986013986
+q09_original_q15_judgment_basis,Pre-collision direction and speed,3,0.01048951048951049
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Relationship between the two ball sizes|Patterns or experience from previous trials,3,0.01048951048951049
+q09_original_q15_judgment_basis,Relationship between the two ball sizes|Intuition or guess,3,0.01048951048951049
+q09_original_q15_judgment_basis,Post-collision motion trend|Relationship between the two ball sizes|Patterns or experience from previous trials,3,0.01048951048951049
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration,3,0.01048951048951049
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend|Intuition or guess,3,0.01048951048951049
+q09_original_q15_judgment_basis,Post-collision motion trend,3,0.01048951048951049
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Relationship between the two ball sizes|Patterns or experience from previous trials,3,0.01048951048951049
+q09_original_q15_judgment_basis,Post-collision motion trend|Candidate landing positions and distance,2,0.006993006993006993
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Candidate landing positions and distance,2,0.006993006993006993
+q09_original_q15_judgment_basis,Intuition or guess,2,0.006993006993006993
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Patterns or experience from previous trials|Intuition or guess,2,0.006993006993006993
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Candidate landing positions and distance|Patterns or experience from previous trials,2,0.006993006993006993
+q09_original_q15_judgment_basis,Candidate landing positions and distance|Relationship between the two ball sizes|Patterns or experience from previous trials,2,0.006993006993006993
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Relationship between the two ball sizes|Intuition or guess,2,0.006993006993006993
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Post-collision motion trend|Patterns or experience from previous trials,2,0.006993006993006993
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend,2,0.006993006993006993
+q09_original_q15_judgment_basis,Post-collision motion trend|Whether post-collision motion remained approximately constant-speed|Relationship between the two ball sizes,2,0.006993006993006993
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend|Whether post-collision motion remained approximately constant-speed,2,0.006993006993006993
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Post-collision motion trend|Intuition or guess,2,0.006993006993006993
+q09_original_q15_judgment_basis,Relationship between the two ball sizes,2,0.006993006993006993
+q09_original_q15_judgment_basis,Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Candidate landing positions and distance|Relationship between the two ball sizes,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Post-collision motion trend|Candidate landing positions and distance|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Whether post-collision motion remained approximately constant-speed,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration|Whether post-collision motion remained approximately constant-speed,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Downward gravity or acceleration|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Post-collision motion trend|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Post-collision motion trend|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Post-collision motion trend|Patterns or experience from previous trials|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Whether post-collision motion remained approximately constant-speed|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Post-collision motion trend|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Candidate landing positions and distance|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Candidate landing positions and distance,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Post-collision motion trend|Candidate landing positions and distance|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Pre-collision direction and speed|Candidate landing positions and distance|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Whether post-collision motion remained approximately constant-speed|Candidate landing positions and distance,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Downward gravity or acceleration|Candidate landing positions and distance|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Patterns or experience from previous trials|Intuition or guess,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Relationship between the two ball sizes|Patterns or experience from previous trials,1,0.0034965034965034965
+q09_original_q15_judgment_basis,Relationship between the two ball sizes|Patterns or experience from previous trials|Intuition or guess,1,0.0034965034965034965
+q10_original_q16_perceived_motion,"I clearly felt that the balls in the gravity condition were affected by downward gravity, whereas the balls in the zero-gravity condition were not",201,0.7027972027972028
+q10_original_q16_perceived_motion,"I felt that the motion rules differed between the two conditions, but I was unsure whether the difference came from gravity",44,0.15384615384615385
+q10_original_q16_perceived_motion,I did not clearly perceive different motion rules between the two conditions,19,0.06643356643356643
+q10_original_q16_perceived_motion,I thought the balls in both conditions were affected by gravity,15,0.05244755244755245
+q10_original_q16_perceived_motion,I thought the balls in neither condition were affected by gravity,6,0.02097902097902098
+q10_original_q16_perceived_motion,"Other: I felt that zero gravity was only the gravity condition flipped vertically; in other words, zero gravity felt more like upward gravity",1,0.0034965034965034965
+q11_original_q17_post_confidence_adjustment,Sometimes,105,0.36713286713286714
+q11_original_q17_post_confidence_adjustment,Rarely,84,0.2937062937062937
+q11_original_q17_post_confidence_adjustment,Often,59,0.2062937062937063
+q11_original_q17_post_confidence_adjustment,Never,32,0.11188811188811189
+q11_original_q17_post_confidence_adjustment,Almost every time,6,0.02097902097902098
+q12_original_q18_confidence_seriousness,Often,139,0.486013986013986
+q12_original_q18_confidence_seriousness,Almost every time,93,0.32517482517482516
+q12_original_q18_confidence_seriousness,Sometimes,41,0.14335664335664336
+q12_original_q18_confidence_seriousness,Rarely,11,0.038461538461538464
+q12_original_q18_confidence_seriousness,Never,2,0.006993006993006993

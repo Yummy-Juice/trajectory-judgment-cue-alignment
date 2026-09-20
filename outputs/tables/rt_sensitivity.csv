@@ -1,0 +1,2 @@
+﻿analysis,lower_ms,upper_ms,n,zero_minus_gravity,ci95_low,ci95_high,paired_p
+decision_rt_restricted,200,5000,354,13.168980225988697,-7.052840199353689,33.390800651331084,0.20111487394247365
