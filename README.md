@@ -13,7 +13,7 @@ cd trajectory-judgment-cue-alignment
 git lfs pull
 ```
 
-The repository excludes derived caches and Python bytecode. Code is released under the MIT License (`LICENSE-CODE`); data and derived outputs are released under CC BY 4.0 (`LICENSE-DATA`). Please cite the version-specific GitHub release using the metadata in `CITATION.cff`.
+The repository excludes derived caches and Python bytecode. Code is released under the MIT License (`LICENSE-CODE`); data and derived outputs are released under CC BY 4.0 (`LICENSE-DATA`). Please cite the version-specific Git tag using the metadata in `CITATION.cff`.
 
 ## One-command reproduction
 
