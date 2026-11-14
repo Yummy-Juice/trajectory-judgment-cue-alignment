@@ -1,41 +1,65 @@
-# Trajectory Judgment Cue-Alignment Replication Package
+# PB&R second-revision public replication package
 
-This repository contains **393 matched participants** with a behavioral CSV and an eye-tracking XLSX. It is a self-contained, reproducible analysis package for the manuscript revision. The participant count is discovered from the current matched filenames rather than hard-coded.
+This package contains 393 matched main-sample behavioral/eye-tracking records and a separate questionnaire-linked behavioral sample with 286 exact public-ID matches. Paths resolve relative to this folder.
 
-## Repository access
+## Repository access and version
 
-The original `.xlsx` workbooks are stored with Git Large File Storage (Git LFS). Clone the full replication package with:
+This is the second-revision package, version 2.0.0, released on 14 November 2026 in the existing repository. The first revision remains available as tag `v1.0.0`. Citation metadata are in `CITATION.cff`. Code uses the MIT License (`LICENSE-CODE`), and data and derived outputs use CC BY 4.0 (`LICENSE-DATA`).
 
-```bash
+Excel workbooks are stored through Git Large File Storage (Git LFS). Install Git LFS and obtain the complete working copy with:
+
+```text
 git lfs install
 git clone https://github.com/Yummy-Juice/trajectory-judgment-cue-alignment.git
 cd trajectory-judgment-cue-alignment
 git lfs pull
 ```
 
-The repository excludes derived caches and Python bytecode. Code is released under the MIT License (`LICENSE-CODE`); data and derived outputs are released under CC BY 4.0 (`LICENSE-DATA`). Please cite the version-specific Git tag using the metadata in `CITATION.cff`.
+## Reproduce the analyses
 
-## One-command reproduction
+Install Python 3.12 with `pip install -r requirements.txt`, plus R 4.4 with `lme4`, `ordinal`, and `MASS`, or use `environment.yml`. From the package root run:
 
-1. Install Python 3.12 and R 4.4 (or create the supplied Conda environment): `conda env create -f environment.yml`.
-2. Ensure R packages `lme4` and `ordinal` are available.
-3. From this folder run `python run_analysis.py` (Windows users may double-click `run_analysis.bat`).
+```text
+python run_analysis.py
+```
 
-The first run parses about 5.5 GB of eye-tracking workbooks and may take 10-30 minutes. Parsed fixation events are cached under `cache/`; use `python run_analysis.py --rebuild-eye` only when the source XLSX files change. All derived results are written to `outputs/`.
+The default command runs the main analyses, the two condition-specific questionnaire comparisons, supplementary Q14 interaction tests, design simulations, seven composite figures, and the Chinese result report. The principal questionnaire comparisons use Q13 groups with gravity behavior and Q14 groups with zero-gravity behavior; both include all ten endpoints and all four metacognitive measures. Windows and shell wrappers are included. [Analysis methods](ANALYSIS_METHODS.md) document estimands, coding, QC, model assumptions, and multiplicity.
 
-## Prespecified exclusion rules
+`--reuse-models` reuses completed R models after directly matching their inputs and specification. Eye events and MLE fits are cached, and simulations resume completed scenario/replicate cells. Use `--rebuild-eye` after changing eye inputs. `--skip-report`, `--skip-figures`, `--skip-simulations`, and `--skip-questionnaire` select partial workflows.
 
-- Behavior: exclude a participant if either condition has fewer than 24 valid responses, fewer than 3 correct responses, or fewer than 3 error responses.
-- AUC: additionally require at least 24 valid confidence trials and at least 3 correct and 3 error confidence trials per condition.
-- Eye tracking: primary threshold is at least 50% non-Gap coverage and at least 10 fixation events in each condition; 40% and 60% thresholds are sensitivity checks.
-- SPAM/DSM: exclude participants whose total usable dyad count is below M - 2 SD. Inference uses normalized dyad frequency, permutation tests, and BH-FDR correction.
+The base random seed remains 20260713. Selected scanpath contrasts use the first-revision bootstrap seed 20260716, 3500 within-group resamples, and the original contrast ordering, independently initialized for each measure. The consolidated AUC intervals match the first-revision table. The analysis methods and the `bootstrap_seed` column in `outputs/tables/scanpath_selected_contrasts_by_metric.csv` document these settings.
 
-## Analysis scope
+## Data, code, and results
 
-The pipeline produces participant-level condition summaries, trial-level GLMM/LMM/CLMM models, confidence-accuracy coupling analyses, stimulus-generation checks, AOI condition-by-region models, exploratory event/duration SPAM-DSM, continuous-AUC sensitivity analyses, diagnostics, publication figures (PNG/PDF/SVG), machine-readable CSV tables, and a concise Chinese Word report.
+| Location | Contents |
+| --- | --- |
+| `behavioral_data/`, `eye_tracking_data/` | The 393 matched main-sample records |
+| [Questionnaire module](questionnaire_public/README.md) | Public responses, codebook, 286 matched behavioral files, comparisons and moderation |
+| `run_analysis.py`, `r_models.R` | Main workflow and behavior/AOI mixed models |
+| `metacognition.py`, `revision_metrics.py` | Meta-d′, signed M-ratio, AUC-ratio and repeated metric analyses |
+| `ordinal_mixed.py`, `ordinal_workflow.py`, `ordinal_design.R` | Stable ordinal likelihood, design export and numerical diagnostics |
+| `revision_simulations.py`, `mixed_model_power.R` | Parameter recovery, paired-design sensitivity and model-based simulation |
+| `nature_figures.py`, `generate_report.py` | All seven figures and the complete result report |
+| [Power module](power_analysis/README.md) | Methods, results and standalone reproduction of 291 native G*Power calculations |
+| `outputs/tables/` | Main effects, source data, SDT counts, model diagnostics, sensitivity and simulation summaries |
+| `outputs/figures/` | Seven composites, each in PNG and vector PDF |
+| `outputs/simulation/` | Consolidated replicate-level results and simulation specification |
+| `outputs/power_analysis/` | G*Power native records, CSV results and numerical checks |
+| `outputs/analysis_summary.json`, `outputs/runtime_manifest.json` | Workflow status, sample counts and executed environment |
 
-The interpretation is deliberately conservative: gravity versus zero-gravity is treated as a task-context/cue-alignment contrast, not as a unique causal test of internal gravity-prior violation.
+Read the complete Chinese report in [HTML](outputs/report/第二版数据分析完整结果报告.html), [Word](outputs/report/第二版数据分析完整结果报告.docx), or [Markdown](outputs/report/第二版数据分析完整结果报告.md). Result tables and all seven figures remain available alongside the report.
 
-## Data notes
+## Regenerate figures or the report
 
-`MainData.TOI` supplies `gravity` and `zero_gravity` labels. Eye files do not retain trial identifiers; therefore scan-path transitions may cross adjacent trial boundaries within a TOI and SPAM/DSM results are exploratory. Original source data are never overwritten.
+```text
+python nature_figures.py
+python generate_report.py
+```
+
+These commands read completed outputs. Figures default to PNG/PDF, controlled by `figure_formats` in `config.json`. To also export editable SVG and 600-dpi TIFF, run `python nature_figures.py --formats png pdf svg tiff`. G*Power has separate Windows commands in the power module and is not launched by the main workflow.
+
+## Runtime files and interpretation
+
+`cache/` holds reusable model fits and temporary worker checkpoints; `outputs/logs/` holds execution logs. Both are excluded from version control. Completed mixed-model replicates are consolidated in `outputs/simulation/mixed_model_power_replicates.csv`; their combined summary is in `outputs/tables/mixed_model_power_summary.csv`.
+
+Main and questionnaire samples have separate QC and denominators. Questionnaire responses were collected after the task. AUC and meta-d′ measure metacognitive sensitivity; signed M-ratio and AUC-ratio measure metacognitive efficiency. Mean confidence and the two confidence models retain their distinct estimands. Questionnaire group differences and eye/scanpath findings are associations. The study and revision-stage extensions were not preregistered. See the analysis methods for full eligibility and interpretation details.

@@ -1,7 +1,10 @@
 {
   "project_title": "PB&R revision analysis: behavior, metacognition, gaze allocation, and scan paths",
   "random_seed": 20260713,
-  "conditions": ["gravity", "zero_gravity"],
+  "conditions": [
+    "gravity",
+    "zero_gravity"
+  ],
   "behavior_qc": {
     "minimum_valid_trials_per_condition": 24,
     "minimum_correct_trials_per_condition": 3,
@@ -13,8 +16,11 @@
     "minimum_error_trials_per_condition": 3
   },
   "eye_qc": {
-    "primary_non_gap_coverage": 0.50,
-    "sensitivity_non_gap_coverage": [0.40, 0.60],
+    "primary_non_gap_coverage": 0.5,
+    "sensitivity_non_gap_coverage": [
+      0.4,
+      0.6
+    ],
     "minimum_fixation_events_per_condition": 10,
     "maximum_gap_multiplier": 2.5
   },
@@ -23,6 +29,69 @@
     "permutations": 5000,
     "fdr_alpha": 0.05
   },
-  "rt_sensitivity_ms": [200, 5000],
-  "figure_dpi": 600
+  "rt_sensitivity_ms": [
+    200,
+    5000
+  ],
+  "figure_dpi": 600,
+  "revision": "second_revision_20261105",
+  "metacognition": {
+    "metrics": [
+      "auc",
+      "meta_d",
+      "m_ratio",
+      "auc_ratio"
+    ],
+    "n_ratings": 7,
+    "method": "equal_variance_conditional_MLE_reference_implementation",
+    "pseudocount_per_cell": 0.07142857142857142,
+    "near_zero_dprime_threshold": 0.01,
+    "m_ratio_clipping": false,
+    "confidence_pooling_sensitivity": {
+      "1-3": 1,
+      "4-5": 2,
+      "6-7": 3
+    },
+    "dprime_sensitivity_threshold": 0.1,
+    "selected_dyad_bootstrap_replicates": 3500
+  },
+  "revision_simulations": {
+    "paired_replicates": 5000,
+    "paired_assumed_dz": [
+      0,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "mle_recovery_replicates_per_scenario": 200,
+    "mle_recovery_scenarios": 4,
+    "mixed_model_replicates_per_scenario": 100,
+    "mixed_model_target_or": [
+      1,
+      0.9
+    ],
+    "parallel_workers": 8
+  },
+  "questionnaire": {
+    "behavior_source": "questionnaire_public/behavioral_data",
+    "main_contrasts": [
+      "Q13_gravity",
+      "Q14_zero_gravity"
+    ],
+    "reviewer_moderation": "condition_by_Q14_interpretation",
+    "link": "exact_public_participant_id_to_filename_stem"
+  },
+  "ordinal_numerics": {
+    "primary_nodes_per_dimension": 1,
+    "sensitivity_nodes_per_dimension": 15,
+    "validation_nodes_per_dimension": 21,
+    "maximum_numerical_gradient": 0.001,
+    "maximum_parameter_change_in_standard_errors": 0.01,
+    "random_structure": "participant intercept and condition slope",
+    "implementation": "stable cumulative-logit Gaussian random-effects likelihood"
+  },
+  "figure_formats": [
+    "png",
+    "pdf"
+  ]
 }

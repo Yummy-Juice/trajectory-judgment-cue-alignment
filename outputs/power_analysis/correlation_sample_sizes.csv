@@ -1,0 +1,9 @@
+metric,condition,eligible_n,source
+auc,gravity,290,outputs/tables/accuracy_metacognition_correlations.csv
+auc,zero_gravity,272,outputs/tables/accuracy_metacognition_correlations.csv
+meta_d,gravity,287,outputs/tables/accuracy_metacognition_correlations.csv
+meta_d,zero_gravity,263,outputs/tables/accuracy_metacognition_correlations.csv
+m_ratio,gravity,287,outputs/tables/accuracy_metacognition_correlations.csv
+m_ratio,zero_gravity,263,outputs/tables/accuracy_metacognition_correlations.csv
+auc_ratio,gravity,290,outputs/tables/accuracy_metacognition_correlations.csv
+auc_ratio,zero_gravity,272,outputs/tables/accuracy_metacognition_correlations.csv

@@ -1,0 +1,7 @@
+Formula: correct ~ condition * confidence_within + confidence_between +      velocity_f + size_pair + target_f + trial_c + trial_c2 +      (1 + condition | subject)
+Target: conditionzero_gravity:confidence_within
+New subject random effects are generated for each replicate with lme4::simulate(re.form=NA).
+Other fixed effects and random-effect covariance are calibrated from the actual fit.
+Each simulated outcome is refitted using the fitted model's same formula and estimation method.
+Wald two-sided alpha=.05; nonconverged/singular/error fits are counted separately and in the total denominator.
+This analysis evaluates the completed design and does not supply an a-priori recruitment rationale.

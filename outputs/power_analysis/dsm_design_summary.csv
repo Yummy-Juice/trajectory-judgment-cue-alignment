@@ -1,0 +1,17 @@
+metric,condition,representation,n_high,n_low,comparison_count,single_metric_bonferroni_alpha,four_metric_bonferroni_alpha,interpretation
+auc,gravity,event,64,63,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc,zero_gravity,event,61,60,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc,gravity,duration,64,63,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc,zero_gravity,duration,61,60,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+meta_d,gravity,event,64,64,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+meta_d,zero_gravity,event,59,59,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+meta_d,gravity,duration,64,64,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+meta_d,zero_gravity,duration,59,59,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+m_ratio,gravity,event,64,64,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+m_ratio,zero_gravity,event,59,59,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+m_ratio,gravity,duration,64,64,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+m_ratio,zero_gravity,duration,59,59,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc_ratio,gravity,event,64,64,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc_ratio,zero_gravity,event,61,61,4,0.0125,0.003125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc_ratio,gravity,duration,64,64,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR
+auc_ratio,zero_gravity,duration,61,61,16,0.003125,0.00078125,Benchmark alpha values; actual analyses use permutation tests and BH-FDR

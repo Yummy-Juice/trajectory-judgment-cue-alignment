@@ -1,0 +1,3 @@
+model,target,true_or,replicates,usable,failed,n_participants,n_trials,detection_all_replicates,monte_carlo_se,monte_carlo_ci95_low,monte_carlo_ci95_high,coverage_95_successful,role
+confidence_accuracy_coupling_glmm,conditionzero_gravity:confidence_within,1.0,100,100,0,354,24615,0.02,0.014,0.005501967550162343,0.0700117907285439,0.98,Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data
+confidence_accuracy_coupling_glmm,conditionzero_gravity:confidence_within,0.9,100,100,0,354,24615,0.9,0.03,0.8256343384950865,0.9447708629393249,0.95,Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data

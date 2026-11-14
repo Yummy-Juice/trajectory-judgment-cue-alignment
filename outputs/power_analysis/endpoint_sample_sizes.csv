@@ -1,0 +1,12 @@
+endpoint,matched_records,eligible_n,retained_fraction,source
+accuracy,393,354,0.9007633587786259,outputs/tables/paired_condition_effects.csv
+answer_rt_median,393,354,0.9007633587786259,outputs/tables/paired_condition_effects.csv
+answer_rt_mean,393,354,0.9007633587786259,outputs/tables/paired_condition_effects.csv
+confidence_mean,393,354,0.9007633587786259,outputs/tables/paired_condition_effects.csv
+confidence_rt_median,393,354,0.9007633587786259,outputs/tables/paired_condition_effects.csv
+auc,393,258,0.6564885496183206,outputs/tables/paired_condition_effects.csv
+d_prime,393,351,0.8931297709923665,outputs/tables/paired_condition_effects.csv
+meta_d,393,247,0.628498727735369,outputs/tables/paired_condition_effects.csv
+m_ratio,393,247,0.628498727735369,outputs/tables/paired_condition_effects.csv
+auc_ratio,393,258,0.6564885496183206,outputs/tables/paired_condition_effects.csv
+primary_eye_sample,393,353,0.8982188295165394,outputs/analysis_summary.json

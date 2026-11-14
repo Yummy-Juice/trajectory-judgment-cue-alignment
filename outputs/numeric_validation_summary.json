@@ -1,0 +1,40 @@
+{
+  "sdt_condition_records": 786,
+  "raw_sdt_count_rows": 22008,
+  "raw_sdt_counts_reconcile": true,
+  "m_ratio_identity": true,
+  "auc_ratio_identity": true,
+  "paired_means_and_sample_sizes_reconcile": true,
+  "questionnaire_exact_matches": 286,
+  "questionnaire_requested_comparison_rows": 20,
+  "questionnaire_moderation_endpoints": 6,
+  "mixed_model_simulation_replicates": 200,
+  "mixed_model_checkpoint_keys_unique": true,
+  "mixed_model_simulation_summaries_reconcile": true,
+  "ordinal_models_with_validated_numerics": [
+    "confidence_clmm",
+    "confidence_bias_clmm",
+    "interpretation_confidence_clmm"
+  ],
+  "figure_composites": 7,
+  "figure_formats_per_composite": 2,
+  "report_embedded_figures": 7,
+  "report_relative_output_links_resolve": true,
+  "complete_workflow": true,
+  "questionnaire_response_bar_counts_match_first_revision": true,
+  "questionnaire_response_bar_source_rows": 4,
+  "questionnaire_figure_width_greater_than_height": true,
+  "questionnaire_figure_pixels": [
+    2700,
+    1800
+  ],
+  "package_organization_update": {
+    "date": "2026-11-05",
+    "figure_formats": [
+      "png",
+      "pdf"
+    ],
+    "checks": "File paths, counts, table equivalence, code syntax and entry references",
+    "statistical_results": "Previously completed results retained"
+  }
+}

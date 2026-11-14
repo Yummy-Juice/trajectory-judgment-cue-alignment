@@ -1,0 +1,5 @@
+﻿panel,questionnaire_item,response,count,denominator,proportion
+a,Q14,billiards,58,262,0.22137404580152673
+a,Q14,3D zero/microgravity,204,262,0.7786259541984732
+b,Q13,3D gravity-consistent,246,286,0.8601398601398601
+b,Q14,3D zero/microgravity-consistent,204,286,0.7132867132867133

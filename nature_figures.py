@@ -7,6 +7,8 @@ source beside the other analysis tables.
 """
 from __future__ import annotations
 
+import argparse
+import json
 from pathlib import Path
 
 import matplotlib
@@ -16,6 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyArrowPatch, Rectangle
+from matplotlib.offsetbox import AnnotationBbox, TextArea, VPacker
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -25,6 +28,8 @@ ROOT = Path(__file__).resolve().parent
 TABLE = ROOT / "outputs" / "tables"
 FIG = ROOT / "outputs" / "figures"
 SEED = 20260713
+FIGURE_FORMATS = tuple(json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
+                       .get("figure_formats", ["png", "pdf"]))
 
 COL = {
     "gravity": "#355C7D",
@@ -74,16 +79,16 @@ def setup_style() -> None:
 
 def export(fig: plt.Figure, stem: str) -> None:
     FIG.mkdir(parents=True, exist_ok=True)
-    base = FIG / stem
-    common = {"facecolor": "white"}
-    fig.savefig(base.with_suffix(".svg"), **common)
-    fig.savefig(base.with_suffix(".pdf"), **common)
-    # The PNG is embedded in the Word report, where 300 dpi is already
-    # publication-clear and keeps Office rendering responsive. Vector PDF/SVG
-    # and the 600 dpi TIFF remain the submission-grade masters.
-    fig.savefig(base.with_suffix(".png"), dpi=300, **common)
-    fig.savefig(base.with_suffix(".tiff"), dpi=600,
-                pil_kwargs={"compression": "tiff_lzw"}, **common)
+    unsupported = set(FIGURE_FORMATS) - {"png", "pdf", "svg", "tiff"}
+    if unsupported:
+        raise ValueError(f"Unsupported figure formats: {sorted(unsupported)}")
+    for extension in FIGURE_FORMATS:
+        options = {"facecolor": "white"}
+        if extension == "png":
+            options["dpi"] = 300
+        elif extension == "tiff":
+            options.update(dpi=600, pil_kwargs={"compression": "tiff_lzw"})
+        fig.savefig((FIG / stem).with_suffix("." + extension), **options)
     plt.close(fig)
 
 
@@ -148,20 +153,51 @@ def paired_distribution(ax: plt.Axes, summary: pd.DataFrame, metric: str,
         ax.set_ylim(*ylim)
 
 
+BEHAVIOR_LABELS = {
+    "accuracy": "Accuracy",
+    "answer_rt_median": "Decision RT (median)",
+    "answer_rt_mean": "Decision RT (mean)",
+    "confidence_mean": "Confidence",
+    "confidence_rt_median": "Confidence RT",
+    "auc": "Type-2 ROC AUC",
+    "meta_d": "meta-d′",
+    "m_ratio": "M-ratio",
+    "auc_ratio": "AUC-ratio",
+    "d_prime": "d′",
+}
+
+
+def effect_forest(ax: plt.Axes, forest: pd.DataFrame, *, xlabel: str,
+                  title: str, lower_text: str, higher_text: str,
+                  xlim: tuple[float, float]) -> None:
+    """The first-revision Figure 1a drawing code, shared with Figure S4."""
+    y = np.arange(len(forest))[::-1]
+    ax.axvspan(min(-.5, xlim[0]), 0, color=COL["pale"], zorder=-3)
+    ax.axvline(0, color=COL["mid"], lw=.75, ls=(0, (3, 2)), zorder=0)
+    for yi, r in zip(y, forest.itertuples()):
+        color = COL["zero"] if r.p < .05 else COL["mid"]
+        ax.plot([r.ci_low, r.ci_high], [yi, yi], color=color, lw=1.45,
+                solid_capstyle="round")
+        ax.scatter(r.dz, yi, s=28, color=color, edgecolor="white",
+                   linewidth=.6, zorder=3)
+    ax.set_yticks(y, forest.label)
+    ax.set_xlim(*xlim)
+    ax.set_xlabel(xlabel)
+    ax.set_title(title, loc="left", pad=7)
+    ax.text(.02, .985, lower_text, transform=ax.transAxes,
+            va="top", color=COL["zero"], fontsize=6.3)
+    ax.text(.98, .985, higher_text, transform=ax.transAxes, ha="right",
+            va="top", color=COL["mid"], fontsize=6.3)
+
+
 def figure1_behavior() -> None:
     rng = np.random.default_rng(SEED)
     effects = pd.read_csv(TABLE / "paired_condition_effects.csv")
     summary = pd.read_csv(TABLE / "participant_condition_summary.csv")
     order = ["accuracy", "answer_rt_median", "answer_rt_mean",
-             "confidence_mean", "confidence_rt_median", "auc"]
-    labels = {
-        "accuracy": "Accuracy",
-        "answer_rt_median": "Decision RT (median)",
-        "answer_rt_mean": "Decision RT (mean)",
-        "confidence_mean": "Confidence",
-        "confidence_rt_median": "Confidence RT",
-        "auc": "Type-2 ROC AUC",
-    }
+             "confidence_mean", "confidence_rt_median", "auc",
+             "meta_d", "m_ratio", "auc_ratio"]
+    labels = BEHAVIOR_LABELS
     rows = []
     for metric in order:
         r = effects.loc[effects.metric.eq(metric)].iloc[0]
@@ -176,39 +212,32 @@ def figure1_behavior() -> None:
     forest.to_csv(TABLE/"figure1_standardized_effects.csv", index=False,
                   encoding="utf-8-sig")
 
-    fig = plt.figure(figsize=(7.2, 4.85))
-    gs = fig.add_gridspec(2, 3, width_ratios=[1.48, 1, 1], hspace=.52,
+    fig = plt.figure(figsize=(7.2, 7.1))
+    gs = fig.add_gridspec(3, 3, width_ratios=[1.48, 1, 1], hspace=.52,
                           wspace=.58, left=.165, right=.985, top=.94, bottom=.12)
     ax = fig.add_subplot(gs[:, 0])
-    y = np.arange(len(forest))[::-1]
-    ax.axvspan(-.5, 0, color=COL["pale"], zorder=-3)
-    ax.axvline(0, color=COL["mid"], lw=.75, ls=(0, (3, 2)), zorder=0)
-    for yi, r in zip(y, forest.itertuples()):
-        color = COL["zero"] if r.p < .05 else COL["mid"]
-        ax.plot([r.ci_low, r.ci_high], [yi, yi], color=color, lw=1.45,
-                solid_capstyle="round")
-        ax.scatter(r.dz, yi, s=28, color=color, edgecolor="white",
-                   linewidth=.6, zorder=3)
-    ax.set_yticks(y, forest.label)
-    ax.set_xlim(-.46, .18)
-    ax.set_xlabel("Paired standardized effect, $d_z$\n(zero gravity − gravity)")
-    ax.set_title("Paired condition effects", loc="left", pad=7)
-    ax.text(.02, .985, "lower in zero gravity", transform=ax.transAxes,
-            va="top", color=COL["zero"], fontsize=6.3)
-    ax.text(.98, .985, "higher", transform=ax.transAxes, ha="right",
-            va="top", color=COL["mid"], fontsize=6.3)
+    effect_forest(ax, forest,
+                  xlabel="Paired standardized effect, $d_z$\n(zero gravity − gravity)",
+                  title="Paired condition effects", lower_text="lower in zero gravity",
+                  higher_text="higher", xlim=(-.46, .25))
     panel(ax, "a", -.22)
 
-    ax_b = fig.add_subplot(gs[0, 1])
-    paired_distribution(ax_b, summary, "accuracy", "Accuracy", rng, (.22, .96))
-    ax_b.set_title("Accuracy", loc="left"); panel(ax_b, "b")
-    ax_c = fig.add_subplot(gs[0, 2])
-    paired_distribution(ax_c, summary, "confidence_mean", "Mean confidence (1–7)", rng, (.9, 7.1))
-    ax_c.set_title("Confidence", loc="left"); panel(ax_c, "c")
-    ax_d = fig.add_subplot(gs[1, 1:])
-    paired_distribution(ax_d, summary, "auc", "Type-2 ROC AUC", rng, (.22, 1.01))
-    ax_d.axhline(.5, color=COL["mid"], lw=.65, ls=(0, (3, 2)), alpha=.75)
-    ax_d.set_title("Metacognitive sensitivity", loc="left"); panel(ax_d, "d", -.10)
+    distribution_panels = [
+        (0, 1, 'b', 'accuracy', 'Accuracy', 'Accuracy', (.22, .96)),
+        (0, 2, 'c', 'answer_rt_median', 'Decision RT', 'Median decision RT (ms)', None),
+        (1, 1, 'd', 'auc', 'AUC', 'Type-2 ROC AUC', (.22, 1.01)),
+        (1, 2, 'e', 'auc_ratio', 'AUC-ratio', 'AUC-ratio', None),
+        (2, 1, 'f', 'meta_d', 'meta-d′', 'meta-d′', None),
+        (2, 2, 'g', 'm_ratio', 'M-ratio', 'M-ratio', None),
+    ]
+    for row, column, letter, metric, title, ylabel, limits in distribution_panels:
+        distribution = fig.add_subplot(gs[row, column])
+        paired_distribution(distribution, summary, metric, ylabel, rng, limits)
+        if metric == 'auc':
+            distribution.axhline(.5, color=COL['mid'], lw=.65,
+                                  ls=(0, (3, 2)), alpha=.75)
+        distribution.set_title(title, loc='left')
+        panel(distribution, letter)
     export(fig, "Figure_1_behavioral_signature")
 
 
@@ -252,9 +281,9 @@ def figure2_monitoring() -> None:
         ("confidence_clmm", "conditionzero_gravity", "Confidence level", "odds ratio"),
         ("confidence_accuracy_coupling_glmm",
          "conditionzero_gravity:confidence_within",
-         "Confidence and accuracy\ncoupling", "odds ratio"),
+         "Confidence slope", "odds ratio"),
         ("confidence_bias_clmm", "conditionzero_gravity:correct_f1",
-         "Correct/error confidence\nseparation", "odds ratio"),
+         "Correctness effect", "odds ratio"),
     ]
     coef_rows = []
     for model, term, label, effect_type in specs:
@@ -534,64 +563,128 @@ def figure4_scanpaths() -> None:
     matrix_rows.to_csv(TABLE/"figure4_zero_gravity_transition_matrix.csv", index=False,
                        encoding="utf-8-sig")
 
-    fig = plt.figure(figsize=(7.2, 5.25))
+    all_dsm = pd.read_csv(TABLE/"dsm_results_by_metric.csv")
+    meta_rows = all_dsm[(all_dsm.metric.eq("meta_d"))
+                       & all_dsm.representation.eq("duration")
+                       & all_dsm.condition.eq("zero_gravity")].copy()
+    meta_rows["delta_pp"] = -meta_rows.high_minus_low*100
+    meta_rows[["source", "destination"]] = meta_rows.dyad.str.split("->", expand=True)
+    signatures = pd.read_csv(TABLE/"scanpath_signatures_by_metric.csv")
+    meta_signature = signatures[(signatures.metric.eq("meta_d"))
+                                & signatures.condition.eq("zero_gravity")].copy()
+    meta_signature["signature_rate_percent"] = meta_signature.signature_rate*100
+    signature_sources = pd.concat([
+        signature.rename(columns={"auc": "metric_value"}).assign(metric="auc"),
+        meta_signature], ignore_index=True)
+
+    fig = plt.figure(figsize=(7.2, 7.1))
     gs = fig.add_gridspec(2, 2, width_ratios=[1.03, 1.15], height_ratios=[1, 1.05],
                           hspace=.54, wspace=.48, left=.11, right=.985,
-                          top=.92, bottom=.11)
-    ax_a = fig.add_subplot(gs[:, 0])
-    limit = float(np.nanmax(np.abs(delta_matrix.values)))
+                          top=.89, bottom=.11)
     cmap = LinearSegmentedColormap.from_list(
         "scanpath_delta", [COL["gravity"], "#F7F4EE", COL["zero"]])
-    im = ax_a.imshow(delta_matrix.values, cmap=cmap, vmin=-limit, vmax=limit,
-                     aspect="equal")
     state_labels = ["Ball\nMedium", "Ball\nLong", "Position\nMedium", "Position\nLong"]
-    ax_a.set_xticks(range(4), state_labels, rotation=0, ha="center")
-    ax_a.set_yticks(range(4), state_labels)
-    ax_a.set_xlabel("Destination state")
-    ax_a.set_ylabel("Source state")
-    for i in range(4):
-        for j in range(4):
-            value = delta_matrix.iloc[i, j]
-            significant = fdr_matrix.iloc[i, j] < .05
-            ax_a.text(j, i, f"{value:+.2f}" + ("*" if significant else ""),
-                      ha="center", va="center", fontsize=6.5,
-                      fontweight="bold" if significant else "normal",
-                      color="white" if abs(value) > limit*.60 else COL["ink"])
-            if significant:
-                ax_a.add_patch(Rectangle((j-.48, i-.48), .96, .96,
-                                         fill=False, edgecolor=COL["ink"],
-                                         linewidth=1.25))
-    cb = fig.colorbar(im, ax=ax_a, orientation="horizontal", fraction=.065,
-                      pad=.18, aspect=24)
-    cb.set_label("Δ = low-AUC rate − high-AUC rate (percentage points)")
-    cb.ax.tick_params(labelsize=6.1)
-    ax_a.text(1.02, 1.00, "* FDR < .05", transform=ax_a.transAxes,
-              ha="left", va="top", fontsize=6.3,
-              color=COL["ink"], fontweight="bold",
-              bbox=dict(facecolor="white", edgecolor="none", pad=.5))
-    ax_a.set_title("Zero-gravity duration-transition matrix", loc="left")
-    panel(ax_a, "a", -.16)
 
-    ax_b = fig.add_subplot(gs[0, 1])
-    x = signature.auc.to_numpy(float)
-    y = signature.signature_rate_percent.to_numpy(float)
-    ax_b.scatter(x, y, s=8, color=COL["violet"], alpha=.30,
-                 edgecolors="none", rasterized=True)
-    xx = np.linspace(x.min(), x.max(), 160)
-    yy = fit.intercept + fit.slope*xx
-    residual = y-(fit.intercept+fit.slope*x)
-    s_err = np.sqrt(np.sum(residual**2)/(len(x)-2))
-    sxx = np.sum((x-x.mean())**2)
-    ci = stats.t.ppf(.975, len(x)-2)*s_err*np.sqrt(1/len(x)+(xx-x.mean())**2/sxx)
-    ax_b.fill_between(xx, yy-ci, yy+ci, color=COL["violet"], alpha=.14, lw=0)
-    ax_b.plot(xx, yy, color=COL["violet"], lw=1.55)
-    ax_b.text(.03, .96, f"r = {fit.rvalue:.2f}, {p_text(fit.pvalue)}, n = {len(x)}",
-              transform=ax_b.transAxes, ha="left", va="top",
-              fontsize=6.5, color=COL["violet"], fontweight="semibold")
-    ax_b.set_xlabel("Type-2 ROC AUC")
+    def transition_matrix(ax_a, rows, label):
+        # Retain the first-revision cell values, significant-cell borders,
+        # two-line state labels, source/destination labels and colorbar.
+        delta_matrix = rows.pivot(index="source", columns="destination", values="delta_pp").reindex(
+            index=state_order, columns=state_order)
+        fdr_matrix = rows.pivot(index="source", columns="destination", values="permutation_p_fdr").reindex(
+            index=state_order, columns=state_order)
+        limit = float(np.nanmax(np.abs(delta_matrix.values)))
+        im = ax_a.imshow(delta_matrix.values, cmap=cmap, vmin=-limit, vmax=limit,
+                         aspect="equal")
+        ax_a.set_xticks(range(4), state_labels, rotation=0, ha="center")
+        ax_a.set_yticks(range(4), state_labels)
+        ax_a.set_xlabel("Destination state", labelpad=4)
+        ax_a.set_ylabel("Source state")
+        for i in range(4):
+            for j in range(4):
+                value = delta_matrix.iloc[i, j]
+                significant = fdr_matrix.iloc[i, j] < .05
+                ax_a.text(j, i, f"{value:+.2f}" + ("*" if significant else ""),
+                          ha="center", va="center", fontsize=6.5,
+                          fontweight="bold" if significant else "normal",
+                          color="white" if abs(value) > limit*.60 else COL["ink"])
+                if significant:
+                    ax_a.add_patch(Rectangle((j-.48, i-.48), .96, .96,
+                                             fill=False, edgecolor=COL["ink"],
+                                             linewidth=1.25))
+        cb = fig.colorbar(im, ax=ax_a, orientation="horizontal", fraction=.065,
+                          pad=.22, aspect=24)
+        cb.set_label(f"Δ = low-{label} rate − high-{label} rate (percentage points)")
+        cb.ax.tick_params(labelsize=6.1)
+        ax_a.text(1.02, 1.00, "* FDR < .05", transform=ax_a.transAxes,
+                  ha="left", va="top", fontsize=6.3,
+                  color=COL["ink"], fontweight="bold",
+                  bbox=dict(facecolor="white", edgecolor="none", pad=.5))
+        ax_a.set_title("Zero-gravity duration-transition matrix\n"+label, loc="left")
+
+    ax_a = fig.add_subplot(gs[0, 0])
+    transition_matrix(ax_a, matrix_rows, "AUC")
+    panel(ax_a, "a", -.16)
+    ax_a_meta = fig.add_subplot(gs[1, 0])
+    transition_matrix(ax_a_meta, meta_rows, "meta-d′")
+    panel(ax_a_meta, "b", -.16)
+
+    scatter_frame = fig.add_subplot(gs[0, 1])
+    scatter_frame.axis('off')
+    scatter_grid = gs[0, 1].subgridspec(3, 1, height_ratios=[.30, 1, .30], hspace=0)
+    scatter_box = scatter_grid[1, 0].get_position(fig)
+    # Grow c into the blank space above d while keeping its top edge fixed.
+    scatter_extension = .04
+    ax_b = fig.add_axes([scatter_box.x0, scatter_box.y0-scatter_extension,
+                        scatter_box.width, scatter_box.height+scatter_extension])
+    ax_meta = ax_b.twiny()
+    ax_meta.xaxis.set_ticks_position('bottom')
+    ax_meta.xaxis.set_label_position('bottom')
+    ax_meta.spines['top'].set_visible(False)
+    ax_meta.spines['bottom'].set_visible(True)
+    ax_meta.spines['bottom'].set_color(COL['teal'])
+    ax_meta.tick_params(axis='x', colors=COL['teal'], top=False, labeltop=False,
+                         bottom=True, labelbottom=True)
+    ax_meta.set_xlabel('meta-d′', color=COL['teal'])
+    ax_b.xaxis.set_ticks_position('top')
+    ax_b.xaxis.set_label_position('top')
+    ax_b.spines['bottom'].set_visible(False)
+    ax_b.spines['top'].set_visible(True)
+    ax_b.spines['top'].set_color(COL['violet'])
+    ax_b.tick_params(axis='x', colors=COL['violet'], bottom=False, labelbottom=False,
+                      top=True, labeltop=True)
+    scatter_y_extents = []
+    for metric, color, label, text_y, vertical in [("auc", COL["violet"], "AUC", .97, 'top'),
+                                                  ("meta_d", COL["teal"], "meta-d′", .03, 'bottom')]:
+        metric_axis = ax_b if metric == 'auc' else ax_meta
+        current = signature_sources[signature_sources.metric.eq(metric)]
+        x = current.metric_value.to_numpy(float)
+        y = current.signature_rate_percent.to_numpy(float)
+        fit = stats.linregress(x, y)
+        metric_axis.scatter(x, y, s=8, color=color, alpha=.30,
+                     edgecolors="none", rasterized=True)
+        xx = np.linspace(x.min(), x.max(), 160)
+        yy = fit.intercept + fit.slope*xx
+        residual = y-(fit.intercept+fit.slope*x)
+        s_err = np.sqrt(np.sum(residual**2)/(len(x)-2))
+        sxx = np.sum((x-x.mean())**2)
+        ci = stats.t.ppf(.975, len(x)-2)*s_err*np.sqrt(1/len(x)+(xx-x.mean())**2/sxx)
+        scatter_y_extents.extend([y, yy-ci, yy+ci])
+        metric_axis.fill_between(xx, yy-ci, yy+ci, color=color, alpha=.14, lw=0)
+        metric_axis.plot(xx, yy, color=color, lw=1.55)
+        metric_axis.set_xlim(x.min()-.05*np.ptp(x), x.max()+.05*np.ptp(x))
+        ax_meta.text(.03, text_y, f"{label}: r = {fit.rvalue:.2f}, {p_text(fit.pvalue)}, n = {len(x)}",
+                  transform=ax_meta.transAxes, ha="left", va=vertical,
+                  fontsize=6.5, color=color, fontweight="semibold", zorder=6)
+    # Keep every point and fitted confidence band in the central part of the
+    # shared y range, reserving empty space for the two in-axes annotations.
+    visible_y = np.concatenate(scatter_y_extents)
+    y_low, y_high = float(np.nanmin(visible_y)), float(np.nanmax(visible_y))
+    y_padding = .30*(y_high-y_low)
+    ax_b.set_ylim(y_low-y_padding, y_high+y_padding)
+    ax_b.set_xlabel("Type-2 ROC AUC", color=COL['violet'])
     ax_b.set_ylabel("Transition-signature rate (%)")
-    ax_b.set_title("Continuous AUC–signature association", loc="left")
-    panel(ax_b, "b", -.23)
+    scatter_frame.set_title("Continuous sensitivity–signature association", loc="left", pad=7)
+    panel(scatter_frame, "c", -.16)
 
     ax_c = fig.add_subplot(gs[1, 1])
     ax_c.set_xlim(0, 1); ax_c.set_ylim(0, 1); ax_c.axis("off")
@@ -603,32 +696,50 @@ def figure4_scanpaths() -> None:
         ax_c.text(x, y, name, ha="center", va="center", fontsize=7.0,
                   color=COL["ink"], zorder=4)
 
-    def arrow(start, end, rad, width):
+    def arrow(start, end, rad, width, color=COL["ink"]):
         x1, y1 = nodes[start]; x2, y2 = nodes[end]
         patch = FancyArrowPatch((x1, y1), (x2, y2),
                                 connectionstyle=f"arc3,rad={rad}",
                                 arrowstyle="-|>", mutation_scale=11,
-                                color=COL["ink"], lw=width, alpha=.82,
+                                color=color, lw=width, alpha=.82,
                                 shrinkA=17, shrinkB=17, zorder=2)
         ax_c.add_patch(patch)
 
     arrow("Ball\n(Med)", "Position\n(Med)", .20, 1.55)
     arrow("Position\n(Med)", "Ball\n(Med)", .20, 1.62)
-    arrow("Ball\n(Med)", "Position\n(Long)", -.08, 1.48)
+    arrow("Ball\n(Med)", "Position\n(Long)", -.08, 2.5)
     label_box = dict(facecolor="white", edgecolor=COL["light"],
                      linewidth=.45, boxstyle="round,pad=.18")
     delta = dict(zip(boot.dyad, boot.estimate*100))
-    ax_c.text(.49, .82, f"Ball → Position (Med)\nΔ = {delta['ball_MED->position_MED']:+.2f} pp",
-              ha="center", va="center", fontsize=5.8, color=COL["ink"], bbox=label_box)
-    ax_c.text(.48, .61, f"Position (Med) → Ball\nΔ = {delta['position_MED->ball_MED']:+.2f} pp",
-              ha="center", va="center", fontsize=5.8, color=COL["ink"], bbox=label_box)
-    ax_c.text(.50, .27, f"Ball → Position (Long)\nΔ = {delta['ball_MED->position_LONG']:+.2f} pp",
-              ha="center", va="center", fontsize=5.8, color=COL["ink"], bbox=label_box)
-    ax_c.text(.5, .02, "Δ = low-AUC rate − high-AUC rate; positive values indicate\nmore frequent transitions in the low-AUC group.",
-              ha="center", va="bottom", fontsize=5.5, color=COL["zero"],
+    for position, title, dyad in [((.49, .82), 'Ball → Position (Med)', 'ball_MED->position_MED'),
+                                   ((.48, .61), 'Position (Med) → Ball', 'position_MED->ball_MED')]:
+        edge_label = VPacker(children=[
+            TextArea(title, textprops=dict(fontsize=5.8, color=COL['ink'])),
+            TextArea(f"Δ = {delta[dyad]:+.2f} pp",
+                     textprops=dict(fontsize=5.8, color=COL['violet']))],
+            align='center', pad=0, sep=1)
+        ax_c.add_artist(AnnotationBbox(edge_label, position, xycoords='data',
+                                      frameon=True, bboxprops=label_box, fontsize=5.8,
+                                      box_alignment=(.5, .5), zorder=5))
+    meta_contrasts = pd.read_csv(TABLE/"scanpath_selected_contrasts_by_metric.csv")
+    meta_edge = meta_contrasts[(meta_contrasts.metric.eq("meta_d"))
+                              & meta_contrasts.condition.eq("zero_gravity")
+                              & meta_contrasts.dyad.eq("ball_MED->position_LONG")].iloc[0]
+    shared_edge_label = VPacker(children=[
+        TextArea('Ball → Position (Long)', textprops=dict(fontsize=5.8, color=COL['ink'])),
+        TextArea(f"Δ = {delta['ball_MED->position_LONG']:+.2f} pp",
+                 textprops=dict(fontsize=5.8, color=COL['violet'])),
+        TextArea(f"Δ = {meta_edge.low_minus_high*100:+.2f} pp",
+                 textprops=dict(fontsize=5.8, color=COL['teal']))],
+        align='center', pad=0, sep=1)
+    ax_c.add_artist(AnnotationBbox(shared_edge_label, (.50, .27), xycoords='data',
+                                  frameon=True, bboxprops=label_box, fontsize=5.8,
+                                  box_alignment=(.5, .5), zorder=5))
+    ax_c.text(.5, .02, "Δ = low − high (pp): purple = AUC; green = meta-d′.\nThe bold arrow is significant for both metrics (FDR < .05).",
+              ha="center", va="bottom", fontsize=5.5, color='black',
               fontweight="bold")
     ax_c.set_title("Directed transition signature", loc="left", pad=2)
-    panel(ax_c, "c", -.12, 1.00)
+    panel(ax_c, "d", -.12, 1.00)
     export(fig, "Figure_4_scanpath_organization")
 
 
@@ -814,6 +925,95 @@ def figure_s2_qc() -> None:
     export(fig, "Figure_S2_quality_control_and_robustness")
 
 
+def response_bars(axes):
+    q = pd.read_csv(ROOT/'questionnaire_public/questionnaire_data_public.csv')
+    billiards = '2D plane motion after collision, like billiards'
+    zero = '3D motion after collision under zero or microgravity; downward gravity need not be considered'
+    gravity = '3D motion after collision with downward gravitational acceleration; downward gravity should be considered'
+    q14 = q.q08_original_q14_zero_gravity_understanding
+    q13 = q.q07_original_q13_gravity_understanding
+    billiards_n = int(q14.eq(billiards).sum())
+    zero_n = int(q14.eq(zero).sum())
+    gravity_n = int(q13.eq(gravity).sum())
+    n = len(q)
+    focal_n = billiards_n+zero_n
+    colors = [COL['gravity_soft'], COL['zero_soft']]
+
+    # The first-revision make_figure: identical counts, denominators and width.
+    axes[0].bar(['2D plane motion\n(like billiards)',
+                 '3D zero/microgravity\n(no downward gravity)'],
+                [billiards_n, zero_n], color=colors, width=.65, alpha=.78)
+    axes[0].set_title('Original Q14: focal responses', loc='left', pad=7)
+    axes[0].set_ylabel('Number of respondents')
+    axes[0].set_ylim(0, max(zero_n, billiards_n)*1.18)
+    for index, count in enumerate([billiards_n, zero_n]):
+        axes[0].text(index, count+3, f'{count}\n({count/focal_n:.1%} of focal)',
+                     ha='center', fontsize=6.7, color=COL['ink'])
+
+    axes[1].bar(['Original Q13:\n3D gravity-\nconsistent',
+                 'Original Q14:\n3D zero-gravity-\nconsistent'],
+                [gravity_n, zero_n], color=colors, width=.65, alpha=.78)
+    axes[1].set_title('Paired marginal proportions', loc='left', pad=7)
+    axes[1].set_ylabel('Number of respondents')
+    axes[1].set_ylim(0, n*1.12)
+    for index, count in enumerate([gravity_n, zero_n]):
+        axes[1].text(index, count+4, f'{count}\n({count/n:.1%})',
+                     ha='center', fontsize=6.7, color=COL['ink'])
+    panel(axes[0], 'a', -.22)
+    panel(axes[1], 'b', -.22)
+    pd.DataFrame([
+        dict(panel='a', questionnaire_item='Q14', response='billiards', count=billiards_n,
+             denominator=focal_n, proportion=billiards_n/focal_n),
+        dict(panel='a', questionnaire_item='Q14', response='3D zero/microgravity', count=zero_n,
+             denominator=focal_n, proportion=zero_n/focal_n),
+        dict(panel='b', questionnaire_item='Q13', response='3D gravity-consistent', count=gravity_n,
+             denominator=n, proportion=gravity_n/n),
+        dict(panel='b', questionnaire_item='Q14', response='3D zero/microgravity-consistent', count=zero_n,
+             denominator=n, proportion=zero_n/n),
+    ]).to_csv(TABLE/'figureS4_questionnaire_response_counts.csv',
+              index=False, encoding='utf-8-sig')
+
+
+def questionnaire_figure():
+    comparisons = pd.read_csv(
+        ROOT/'questionnaire_public/questionnaire_outputs/questionnaire_group_comparisons.csv')
+    forests = []
+    for item in ['Q13', 'Q14']:
+        selected = comparisons[comparisons.questionnaire_item.eq(item)]
+        rows = []
+        for row in selected.itertuples():
+            pooled = np.sqrt(((row.n_three_d-1)*row.sd_three_d**2
+                              +(row.n_billiards-1)*row.sd_billiards**2)
+                             /(row.n_three_d+row.n_billiards-2))
+            correction = 1-3/(4*(row.n_three_d+row.n_billiards-2)-1)
+            rows.append(dict(metric=row.metric, label=BEHAVIOR_LABELS[row.metric],
+                             dz=row.hedges_g, ci_low=row.ci95_low/pooled*correction,
+                             ci_high=row.ci95_high/pooled*correction, p=row.p_value))
+        forests.append(pd.DataFrame(rows))
+    extent = max(abs(forest[['ci_low', 'ci_high']].to_numpy()).max() for forest in forests)
+    extent = np.ceil(extent/.2)*.2
+    fig = plt.figure(figsize=(9.0, 6.0))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1, 1], width_ratios=[1, 1],
+                          left=.165, right=.985, top=.94,
+                          bottom=.12, wspace=.75, hspace=.42)
+    axes = [[fig.add_subplot(gs[row, column]) for column in range(2)]
+            for row in range(2)]
+    for column, (forest, title, letter) in enumerate(zip(
+            forests, ['Q13 | Gravity', 'Q14 | Zero gravity'], ['c', 'd'])):
+        ax = axes[1][column]
+        effect_forest(ax, forest, xlabel='Standardized group effect, Hedges g\n(billiards − 3D)',
+                           title=title, lower_text='lower in billiards', higher_text='higher',
+                           xlim=(-extent, extent))
+        ax.set_ylim(-.45, len(forest)-.05)
+        panel(ax, letter, -.22)
+    response_bars(axes[0])
+    for row in axes:
+        for ax in row:
+            ax.set_aspect('auto')
+            ax.set_title(ax.get_title(loc='left'), loc='left', pad=7)
+    export(fig, 'Figure_S4_questionnaire_group_comparisons')
+
+
 def generate_all() -> None:
     setup_style()
     figure1_behavior()
@@ -822,7 +1022,12 @@ def generate_all() -> None:
     figure4_scanpaths()
     figure_s1_task_structure()
     figure_s2_qc()
+    questionnaire_figure()
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--formats", nargs="+", choices=["png", "pdf", "svg", "tiff"],
+                        default=list(FIGURE_FORMATS), help="Export formats; defaults to config.json")
+    FIGURE_FORMATS = tuple(parser.parse_args().formats)
     generate_all()

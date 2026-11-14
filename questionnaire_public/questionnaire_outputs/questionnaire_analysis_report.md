@@ -1,53 +1,45 @@
-# Questionnaire analysis report
+# 问卷任务理解分组比较
 
-## Dataset
+本报告的主要比较为：按第13题分组，比较三维组与二维台球式组在重力条件下的表现；按第14题重新分组，比较两组在无重力条件下的表现。每项比较包含全部10项指标，包括 AUC、meta-d′、有符号 M-ratio 和 AUC-ratio。行为数据仅来自本目录 `behavioral_data/`，并按公开匿名 `participant_id` 与行为 CSV 文件名一一连接。问卷在任务后完成，因此分组差异作为探索性关联解释。
 
-- Respondents: **286**
-- Original submission timestamps were removed from the public dataset.
-- Public respondent IDs were newly assigned and do not encode the source identifier.
+检验均为被试水平的双尾 Welch 独立样本 t 检验。差值方向固定为二维台球式理解减三维理解；95% CI 对应该均值差。Hedges g 使用两组 pooled SD，并作小样本修正 J=1−3/(4×pooled df−1)。主要结论采用 `q_bh_10_endpoints`，在每道题内对10项终点作 BH 校正；`q_bh_4_metacognition` 在每道题内对 AUC、meta-d′、M-ratio、AUC-ratio 四项另作补充校正。
 
-## Requested comparison 1: original Q14
+每一问只分析指定的两个选项，其他回答不纳入组间检验。组间比较的有效人数按各终点分别计算。基础选择终点要求有效 ExpectedAnswer/UserAnswer 编码为0/1，至少24个试次且至少3个正确和3个错误；信心终点另外要求至少24个1–7级整数信心试次，并在这些试次中至少3个正确和3个错误。两道题分别按其对应条件筛选，不要求另一条件通过QC。反应时只使用大于0毫秒的值；信心缺失不影响准确率和决策时分析。
 
-Among the **262** respondents who selected one of the two focal Q14 interpretations:
+## Q13：gravity 条件下的三维重力理解组与二维台球式组
 
-- **58 (22.1%)** selected 2D plane motion after collision, like billiards.
-- **204 (77.9%)** selected 3D zero/microgravity motion without considering downward gravity.
-- A paired-samples t-test was conducted on two binary indicators for the same respondents (category 2 minus category 1): **t(261) = 10.84, p < .001**.
-- Mean difference in the binary indicators (3D zero/microgravity minus 2D billiards): **0.557**, 95% CI **[0.456, 0.658]**.
-- Wilson 95% CI for the zero/microgravity proportion among focal responses: **[72.5%, 82.5%]**.
+| 指标 | 二维台球式 n；M (SD)；中位数 | 三维组 n；M (SD)；中位数 | 差值（台球−三维） | Welch t(df) | 95% CI | p | q：10项 | q：元认知4项 | Hedges g |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Accuracy | 25; 0.618 (0.151); 0.588 | 230; 0.659 (0.142); 0.667 | -0.041 | -1.29 (28.8) | [-0.106, 0.024] | 0.2056 | 0.4113 | NA | -0.287 |
+| Decision RT median (ms) | 25; 1051.099 (288.153); 1066.331 | 230; 1106.259 (273.817); 1075.501 | -55.160 | -0.91 (28.9) | [-178.693, 68.373] | 0.3686 | 0.4807 | NA | -0.200 |
+| Decision RT mean (ms) | 25; 1161.926 (306.202); 1232.104 | 230; 1207.127 (271.417); 1193.611 | -45.201 | -0.71 (28.3) | [-175.841, 85.438] | 0.4845 | 0.5324 | NA | -0.164 |
+| Mean confidence (1–7) | 25; 5.898 (0.996); 5.944 | 226; 5.597 (1.338); 5.971 | 0.301 | 1.38 (34.4) | [-0.142, 0.744] | 0.1770 | 0.4113 | NA | 0.229 |
+| Confidence RT median (ms) | 25; 783.130 (334.463); 833.175 | 226; 689.253 (300.779); 599.837 | 93.877 | 1.34 (28.5) | [-49.040, 236.794] | 0.1894 | 0.4113 | NA | 0.308 |
+| Type-2 ROC AUC | 22; 0.503 (0.133); 0.471 | 165; 0.562 (0.117); 0.545 | -0.060 | -2.01 (25.5) | [-0.121, 0.002] | 0.0555 | 0.4113 | 0.1729 | -0.500 |
+| meta-d′ | 22; 0.099 (1.360); -0.359 | 159; 0.637 (1.033); 0.465 | -0.538 | -1.79 (24.5) | [-1.160, 0.083] | 0.0864 | 0.4113 | 0.1729 | -0.498 |
+| M-ratio | 22; 0.144 (2.971); -0.202 | 159; 0.563 (2.411); 0.603 | -0.419 | -0.63 (25.0) | [-1.781, 0.944] | 0.5324 | 0.5324 | 0.5324 | -0.168 |
+| AUC-ratio | 22; 0.906 (0.234); 0.920 | 165; 0.952 (0.165); 0.954 | -0.046 | -0.89 (23.9) | [-0.152, 0.061] | 0.3846 | 0.4807 | 0.5128 | -0.261 |
+| d′ (reference) | 25; 0.663 (0.826); 0.622 | 226; 0.837 (0.789); 0.822 | -0.174 | -1.00 (29.1) | [-0.528, 0.180] | 0.3240 | 0.4807 | NA | -0.219 |
 
-The t-test is conditional on the two focal options; the **24** other Q14 responses are not treated as support for either focal interpretation.
+问卷焦点选项人数：二维台球式理解 26 人，三维理解 246 人。每个终点的纳入与排除人数见 `questionnaire_sample_flow.csv`。
 
-## Requested comparison 2: original Q13 versus original Q14
+## Q14：zero-gravity 条件下的三维无／微重力理解组与二维台球式组
 
-Binary indicators were defined within each respondent:
+| 指标 | 二维台球式 n；M (SD)；中位数 | 三维组 n；M (SD)；中位数 | 差值（台球−三维） | Welch t(df) | 95% CI | p | q：10项 | q：元认知4项 | Hedges g |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Accuracy | 54; 0.659 (0.127); 0.652 | 196; 0.657 (0.135); 0.647 | 0.002 | 0.10 (88.7) | [-0.037, 0.041] | 0.9173 | 0.9173 | NA | 0.015 |
+| Decision RT median (ms) | 54; 1158.375 (292.782); 1070.519 | 196; 1197.526 (306.049); 1158.899 | -39.152 | -0.86 (87.6) | [-129.472, 51.168] | 0.3913 | 0.6913 | NA | -0.129 |
+| Decision RT mean (ms) | 54; 1278.648 (268.367); 1226.210 | 196; 1308.055 (285.683); 1312.092 | -29.407 | -0.70 (88.9) | [-112.532, 53.719] | 0.4839 | 0.6913 | NA | -0.104 |
+| Mean confidence (1–7) | 52; 5.813 (1.246); 6.289 | 195; 5.557 (1.262); 5.778 | 0.255 | 1.31 (81.1) | [-0.133, 0.643] | 0.1946 | 0.4864 | NA | 0.202 |
+| Confidence RT median (ms) | 52; 812.387 (324.163); 808.203 | 195; 803.511 (305.683); 774.820 | 8.876 | 0.18 (76.9) | [-90.688, 108.441] | 0.8596 | 0.9173 | NA | 0.029 |
+| Type-2 ROC AUC | 45; 0.578 (0.106); 0.566 | 156; 0.531 (0.115); 0.510 | 0.046 | 2.54 (76.8) | [0.010, 0.083] | 0.0132 | 0.0658 | 0.0263 | 0.408 |
+| meta-d′ | 43; 0.741 (0.906); 0.758 | 153; 0.379 (1.000); 0.200 | 0.362 | 2.26 (73.3) | [0.043, 0.681] | 0.0268 | 0.0892 | 0.0357 | 0.368 |
+| M-ratio | 43; -0.019 (4.327); 0.744 | 153; 0.490 (2.451); 0.475 | -0.509 | -0.74 (49.8) | [-1.893, 0.875] | 0.4634 | 0.6913 | 0.4634 | -0.171 |
+| AUC-ratio | 45; 1.008 (0.156); 0.999 | 156; 0.908 (0.182); 0.925 | 0.100 | 3.66 (82.1) | [0.046, 0.155] | 0.0004 | 0.0044 | 0.0018 | 0.566 |
+| d′ (reference) | 52; 0.813 (0.719); 0.777 | 195; 0.832 (0.770); 0.731 | -0.019 | -0.17 (84.9) | [-0.245, 0.207] | 0.8676 | 0.9173 | NA | -0.025 |
 
-- Original Q13 indicator = selected the 3D falling-motion interpretation with downward gravity.
-- Original Q14 indicator = selected the 3D zero/microgravity interpretation without downward gravity.
+问卷焦点选项人数：二维台球式理解 58 人，三维理解 204 人。每个终点的纳入与排除人数见 `questionnaire_sample_flow.csv`。
 
-Marginally, **246/286 (86.0%)** endorsed the Q13 gravity-consistent interpretation, compared with **204/286 (71.3%)** for the Q14 zero-gravity-consistent interpretation.
+## 复现
 
-Because both indicators came from the same respondents, a paired-samples t-test was conducted on the two binary indicators:
-
-- Q13-only: **66**
-- Q14-only: **24**
-- Both: **180**
-- Neither: **16**
-- Paired t-test for Q14 zero/microgravity minus Q13 gravity-consistent: **t(285) = -4.58, p < .001**.
-- Mean difference in the binary indicators (Q14 minus Q13): **-0.147**, 95% CI **[-0.210, -0.084]**.
-
-Thus, the gravity-consistent interpretation was endorsed more often in original Q13 than the zero-gravity-consistent interpretation was endorsed in original Q14, with a statistically significant paired marginal difference.
-
-## Interpretation boundary
-
-These results show how respondents described the task and how their interpretations differed across the two questionnaire prompts. They support a condition-associated difference in reported task understanding. They do not, by themselves, establish that an internal gravity prior was causally violated or updated, because the two task contexts may also differ in motion profile, cue alignment, and perceived task demands.
-
-## Reproduction
-
-Run:
-
-```text
-python analyze_questionnaire.py
-```
-
-The script writes the CSV tables, JSON summary, and PNG figure to `questionnaire_outputs/`.
+在本目录运行 `python analyze_questionnaire.py`。指标表、组间比较、样本流、模型诊断、汇总 JSON 与本报告写入 `questionnaire_outputs/`。

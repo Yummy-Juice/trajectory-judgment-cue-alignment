@@ -1,0 +1,6 @@
+﻿metric,behavioral_qc_participants,confidence_count_qc_participants,finite_gravity,finite_zero_gravity,finite_paired
+d_prime,354,351,351,351,351
+auc,354,351,290,272,258
+meta_d,354,351,287,263,247
+m_ratio,354,351,287,263,247
+auc_ratio,354,351,290,272,258

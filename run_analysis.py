@@ -3,8 +3,8 @@
 
 Run from this folder with ``python run_analysis.py``. The script discovers
 participants from matched CSV/XLSX stems, applies the prespecified filters,
-caches the expensive eye-event extraction, fits mixed models through the
-bundled R script, creates publication figures, and writes a concise DOCX report.
+caches eye-event extraction, fits mixed models with R and stable ordinal
+likelihoods, creates publication figures, and writes the Chinese result report.
 """
 from __future__ import annotations
 
@@ -18,6 +18,9 @@ import subprocess
 import sys
 import time
 import warnings
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from importlib.metadata import version as package_version
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -46,6 +49,7 @@ REPORT_DIR = OUT_DIR / "report"
 CONFIG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
 SEED = int(CONFIG["random_seed"])
 RNG = np.random.default_rng(SEED)
+MODEL_INPUTS_UNCHANGED = False
 CONDITIONS = CONFIG["conditions"]
 OKABE_ITO = {"gravity": "#0072B2", "zero_gravity": "#D55E00", "ball": "#009E73", "position": "#CC79A7"}
 
@@ -56,7 +60,7 @@ def ensure_dirs() -> None:
 
 
 def write_log(message: str) -> None:
-    stamp = time.strftime("%Y-%m-%d %H:%M:%S")
+    stamp = datetime.now(ZoneInfo('Asia/Shanghai')).strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{stamp}] {message}"
     print(line, flush=True)
     with (LOG_DIR / "pipeline.log").open("a", encoding="utf-8") as f:
@@ -388,31 +392,59 @@ def analyze_dsm(df: pd.DataFrame, representation: str) -> tuple[pd.DataFrame,pd.
 
 
 def prepare_r_input(trial: pd.DataFrame, eye_metrics: pd.DataFrame) -> Path:
+    global MODEL_INPUTS_UNCHANGED
     cols=["subject","condition","correct","confidence","confidence_within","confidence_between","velocity","size_pair","target","trial_c","trial_c2",
           "log_answer_rt","log_confidence_rt","occlusion_hidden_c","behavior_included"]
     d=trial[cols].copy()
+    old_inputs = [CACHE_DIR/'behavior_model_input.csv', CACHE_DIR/'eye_metrics_model_input.csv']
+    unchanged = []
+    for path, current in zip(old_inputs,[d,eye_metrics]):
+        try:
+            old=pd.read_csv(path,dtype={'subject':str})
+            pd.testing.assert_frame_equal(old.reset_index(drop=True),current.reset_index(drop=True),
+                                          check_dtype=False,rtol=1e-10,atol=1e-12)
+            unchanged.append(True)
+        except (FileNotFoundError,AssertionError,ValueError):
+            unchanged.append(False)
+    MODEL_INPUTS_UNCHANGED = all(unchanged)
     path=CACHE_DIR/"behavior_model_input.csv"; d.to_csv(path,index=False)
     eye_metrics.to_csv(CACHE_DIR/"eye_metrics_model_input.csv",index=False)
     return path
 
 
-def run_r_models(input_path: Path) -> None:
+def run_r_models(input_path: Path, reuse: bool=False) -> None:
+    state_path=CACHE_DIR/'model_state.json'
+    if reuse:
+        state=json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {}
+        if not MODEL_INPUTS_UNCHANGED or state.get('r_script_mtime_ns') != (ROOT/'r_models.R').stat().st_mtime_ns:
+            raise RuntimeError('Requested model reuse but model input or R specification changed; run without --reuse-models')
+        required=['behavior_mixed_model_coefficients.csv','behavior_model_diagnostics.csv',
+                  'eye_mixed_model_coefficients.csv','eye_model_diagnostics.csv']
+        if not all((TABLE_DIR/p).exists() for p in required):
+            raise RuntimeError('Requested model reuse but required outputs are missing')
+        write_log('Reusing completed second-revision R models after direct input-table equality check')
+        return
     rscript=shutil.which("Rscript")
     if not rscript:
         save_csv(pd.DataFrame([{"status":"not_run","reason":"Rscript not found; install R, lme4, and ordinal"}]),"r_model_status.csv")
         write_log("Rscript not found; mixed models skipped")
-        return
+        raise RuntimeError('Rscript is required for the requested complete analysis')
     probe=subprocess.run([rscript,"-e","quit(status=ifelse(requireNamespace('lme4',quietly=TRUE)&&requireNamespace('ordinal',quietly=TRUE),0,2))"])
     if probe.returncode!=0:
         save_csv(pd.DataFrame([{"status":"not_run","reason":"Required R packages lme4/ordinal unavailable"}]),"r_model_status.csv")
-        return
+        raise RuntimeError('R packages lme4 and ordinal are required')
+    import ordinal_workflow
+    ordinal_workflow.ensure(ROOT,'confidence',write_log)
+    ordinal_workflow.ensure(ROOT,'bias',write_log)
     cmd=[rscript,str(ROOT/"r_models.R"),str(input_path),str(TABLE_DIR)]
     write_log("Fitting R mixed models")
-    proc=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,encoding="utf-8",errors="replace")
-    (LOG_DIR/"r_models_stdout.log").write_text(proc.stdout,encoding="utf-8")
-    (LOG_DIR/"r_models_stderr.log").write_text(proc.stderr,encoding="utf-8")
-    save_csv(pd.DataFrame([{"status":"success" if proc.returncode==0 else "failed","return_code":proc.returncode,"command":" ".join(cmd)}]),"r_model_status.csv")
+    with (LOG_DIR/'r_models_stdout.log').open('w',encoding='utf-8') as out, (LOG_DIR/'r_models_stderr.log').open('w',encoding='utf-8') as err:
+        proc=subprocess.run(cmd,cwd=ROOT,stdout=out,stderr=err)
+    public_command = "Rscript r_models.R cache/behavior_model_input.csv outputs/tables"
+    save_csv(pd.DataFrame([{"status":"success" if proc.returncode==0 else "failed","return_code":proc.returncode,"command":public_command}]),"r_model_status.csv")
     if proc.returncode!=0: raise RuntimeError(f"R models failed; see {LOG_DIR/'r_models_stderr.log'}")
+    state_path.write_text(json.dumps({'r_script_mtime_ns':(ROOT/'r_models.R').stat().st_mtime_ns,
+                                     'status':'completed','behavior_rows':len(pd.read_csv(input_path))}),encoding='utf-8')
 
 
 def normalize_model_diagnostics() -> None:
@@ -546,10 +578,17 @@ def sample_flow(trial:pd.DataFrame,eye_qc:pd.DataFrame,dyad_totals:pd.DataFrame)
 
 
 def write_runtime_manifest(participants:list[str]) -> None:
-    info={"timestamp":time.strftime("%Y-%m-%dT%H:%M:%S%z"),"python":sys.version,"platform":platform.platform(),
+    info={"timestamp":datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),"python":sys.version,"platform":platform.platform(),
           "participants":len(participants),"random_seed":SEED,"command":" ".join(sys.argv)}
+    info['python_packages']={name:package_version(name) for name in ['numpy','pandas','scipy','statsmodels','scikit-learn','matplotlib','python-calamine','python-docx']}
+    info['revision']='second revision; MLE and metric-specific extensions; separate questionnaire behavior source'
+    info['scanpath_bootstrap']={
+        'seed':SEED+3,'resamples':3500,'random_stream':'reinitialized for each metric',
+        'contrast_order':['permutation_p_fdr','dyad'],
+    }
     try:
-        info["r_version"]=subprocess.run([shutil.which("Rscript") or "Rscript","--version"],capture_output=True,text=True).stderr.strip()
+        rp=subprocess.run([shutil.which("Rscript") or "Rscript","--version"],capture_output=True,text=True)
+        info['r_version']=(rp.stdout+rp.stderr).strip()
     except Exception: info["r_version"]="not available"
     (OUT_DIR/"runtime_manifest.json").write_text(json.dumps(info,ensure_ascii=False,indent=2),encoding="utf-8")
 
@@ -595,69 +634,69 @@ def robustness_tables(trial:pd.DataFrame,summary:pd.DataFrame,eye_events:pd.Data
     save_csv(pd.DataFrame(sens),"eye_coverage_threshold_sensitivity.csv")
 
 
-def update_readme(participants:int) -> None:
-    text=f"""# OSF-ready PB&R revision analysis package
-
-This folder contains **{participants} matched participants** with a behavioral CSV and an eye-tracking XLSX. It is a self-contained, reproducible analysis package for the manuscript revision. The participant count is discovered from the current matched filenames rather than hard-coded.
-
-## One-command reproduction
-
-1. Install Python 3.12 and R 4.4 (or create the supplied Conda environment): `conda env create -f environment.yml`.
-2. Ensure R packages `lme4` and `ordinal` are available.
-3. From this folder run `python run_analysis.py` (Windows users may double-click `run_analysis.bat`).
-
-The first run parses about 5.5 GB of eye-tracking workbooks and may take 10-30 minutes. Parsed fixation events are cached under `cache/`; use `python run_analysis.py --rebuild-eye` only when the source XLSX files change. All derived results are written to `outputs/`.
-
-## Prespecified exclusion rules
-
-- Behavior: exclude a participant if either condition has fewer than 24 valid responses, fewer than 3 correct responses, or fewer than 3 error responses.
-- AUC: additionally require at least 24 valid confidence trials and at least 3 correct and 3 error confidence trials per condition.
-- Eye tracking: primary threshold is at least 50% non-Gap coverage and at least 10 fixation events in each condition; 40% and 60% thresholds are sensitivity checks.
-- SPAM/DSM: exclude participants whose total usable dyad count is below M - 2 SD. Inference uses normalized dyad frequency, permutation tests, and BH-FDR correction.
-
-## Analysis scope
-
-The pipeline produces participant-level condition summaries, trial-level GLMM/LMM/CLMM models, confidence-accuracy coupling analyses, stimulus-generation checks, AOI condition-by-region models, exploratory event/duration SPAM-DSM, continuous-AUC sensitivity analyses, diagnostics, publication figures (PNG/PDF/SVG), machine-readable CSV tables, and a concise Chinese Word report.
-
-The interpretation is deliberately conservative: gravity versus zero-gravity is treated as a task-context/cue-alignment contrast, not as a unique causal test of internal gravity-prior violation.
-
-## Data notes
-
-`MainData.TOI` supplies `gravity` and `zero_gravity` labels. Eye files do not retain trial identifiers; therefore scan-path transitions may cross adjacent trial boundaries within a TOI and SPAM/DSM results are exploratory. Original source data are never overwritten.
-"""
-    (ROOT/"README.md").write_text(text,encoding="utf-8")
-
-
 def main() -> None:
-    parser=argparse.ArgumentParser();parser.add_argument("--rebuild-eye",action="store_true");parser.add_argument("--skip-models",action="store_true");parser.add_argument("--skip-report",action="store_true");args=parser.parse_args()
+    parser=argparse.ArgumentParser()
+    for flag in ['rebuild-eye','skip-models','reuse-models','skip-report','skip-figures','skip-simulations','skip-questionnaire']:
+        parser.add_argument('--'+flag,action='store_true')
+    args=parser.parse_args()
     ensure_dirs();setup_plot_style();(LOG_DIR/"pipeline.log").write_text("",encoding="utf-8")
-    participants,file_match=discover_participants();write_log(f"Matched participants: {len(participants)}");save_csv(file_match,"file_matching_audit.csv");update_readme(len(participants));write_runtime_manifest(participants)
+    participants,file_match=discover_participants();write_log(f"Matched participants: {len(participants)}");save_csv(file_match,"file_matching_audit.csv");write_runtime_manifest(participants)
     trial,qc,file_audit=load_behavior(participants);save_csv(file_audit,"behavior_file_audit.csv");save_csv(qc,"behavior_qc_by_condition.csv")
-    summary,effects=summarize_behavior(trial,qc);save_csv(summary,"participant_condition_summary.csv");save_csv(effects,"paired_condition_effects.csv")
+    summary,effects=summarize_behavior(trial,qc)
+    import revision_metrics
+    summary,effects=revision_metrics.extend_summary(sys.modules[__name__],trial,summary,qc)
+    save_csv(summary,"participant_condition_summary.csv");save_csv(effects,"paired_condition_effects.csv")
     write_log(f"Behavior included: {trial.drop_duplicates('subject').behavior_included.sum()}; AUC included: {trial.drop_duplicates('subject').auc_included.sum()}")
     events,eye_qc,eye_metrics=process_eye(participants,args.rebuild_eye);save_csv(eye_qc,"eye_qc_by_condition.csv");save_csv(eye_metrics,"eye_metrics_subject_condition_region.csv")
     er,dr,totals,auc=build_dyads(events,summary);save_csv(er,"event_dyad_subject_rates.csv");save_csv(dr,"duration_dyad_subject_rates.csv");save_csv(totals,"spam_dsm_dyad_qc.csv")
     event_res,event_cont=analyze_dsm(er,"event");dur_res,dur_cont=analyze_dsm(dr,"duration");dsm=pd.concat([event_res,dur_res],ignore_index=True);cont=pd.concat([event_cont,dur_cont],ignore_index=True)
     save_csv(dsm,"dsm_results_all.csv");save_csv(cont,"dsm_continuous_auc_sensitivity.csv")
+    revision_metrics.extend_dsm(sys.modules[__name__],events,summary,(dsm,cont,er,dr,totals))
     support=[]
     for rep,df in [("event",er),("duration",dr)]:
         for (cond,dyad),g in df.groupby(["condition","dyad"]):support.append({"representation":rep,"condition":cond,"dyad":dyad,"n_participants":g.subject.nunique(),"s_support":(g['count']>0).mean(),"i_support_total":g['count'].sum(),"mean_normalized_i_support":g.rate.mean()})
     save_csv(pd.DataFrame(support),"spam_support_summary.csv")
     flow=sample_flow(trial,eye_qc,totals);save_csv(flow,"sample_flow.csv");robustness_tables(trial,summary,events,eye_qc)
     model_input=prepare_r_input(trial,eye_metrics)
-    if not args.skip_models:run_r_models(model_input)
+    run_r_models(model_input,reuse=args.skip_models or args.reuse_models)
     normalize_model_diagnostics()
+    revision_metrics.coupling_interpretation(sys.modules[__name__])
+    if not args.skip_questionnaire:
+        # Principal comparisons: Q13 groups in gravity; Q14 groups in zero gravity.
+        # Both comparisons include all ten endpoints and the four metacognitive measures.
+        cmd=[sys.executable,str(ROOT/'questionnaire_public/analyze_questionnaire.py')]
+        proc=subprocess.run(cmd,cwd=ROOT,text=True,capture_output=True,encoding='utf-8',errors='replace')
+        (LOG_DIR/'questionnaire_stdout.log').write_text(proc.stdout,encoding='utf-8')
+        (LOG_DIR/'questionnaire_stderr.log').write_text(proc.stderr,encoding='utf-8')
+        if proc.returncode:raise RuntimeError('Questionnaire analysis failed: '+proc.stderr)
+        # Additional paired-condition interaction tests are reported separately in S14.
+        import questionnaire_moderation
+        questionnaire_moderation.run(ROOT,reuse=args.reuse_models)
+    if not args.skip_simulations:
+        import revision_simulations
+        revision_simulations.run(ROOT,write_log)
     # Generate the fixed 183-mm Nature-style figure system after all source
     # tables and model diagnostics are available.
-    import nature_figures
-    nature_figures.generate_all()
+    if not args.skip_figures:
+        import nature_figures
+        nature_figures.generate_all()
     summary_json={"matched":len(participants),"behavior_included":int(flow.loc[flow.stage.eq('Behavior QC included'),'n'].iloc[0]),"auc_included":int(flow.loc[flow.stage.eq('AUC QC included'),'n'].iloc[0]),"eye_included":int(flow.loc[flow.stage.eq('Eye QC included (50%)'),'n'].iloc[0]),"spam_included":int(flow.loc[flow.stage.eq('SPAM/DSM M-2SD included'),'n'].iloc[0]),"significant_dsm_fdr":int((dsm.permutation_p_fdr<.05).sum())}
+    sf=pd.read_csv(TABLE_DIR/'metad_sample_flow.csv')
+    summary_json['finite_paired_by_metric']={row.metric:int(row.finite_paired) for row in sf.itertuples()}
+    summary_json['workflow_switches']=vars(args)
+    summary_json['complete_workflow']=False
     (OUT_DIR/"analysis_summary.json").write_text(json.dumps(summary_json,ensure_ascii=False,indent=2),encoding="utf-8")
     if not args.skip_report:
-        proc=subprocess.run([sys.executable,str(ROOT/"generate_report.py")],cwd=ROOT,text=True,capture_output=True,encoding="utf-8",errors="replace")
+        proc=subprocess.run([sys.executable,'-X','faulthandler',str(ROOT/"generate_report.py")],cwd=ROOT,text=True,capture_output=True,encoding="utf-8",errors="replace")
         (LOG_DIR/"report_stdout.log").write_text(proc.stdout,encoding="utf-8");(LOG_DIR/"report_stderr.log").write_text(proc.stderr,encoding="utf-8")
-        if proc.returncode:raise RuntimeError(f"Report generation failed: {proc.stderr}")
+        if proc.returncode:raise RuntimeError(f"Report generation failed (exit {proc.returncode}): {proc.stderr}")
     write_log("Analysis pipeline completed successfully")
+    summary_json['complete_workflow']=not any([args.skip_report,args.skip_figures,args.skip_simulations,args.skip_questionnaire])
+    summary_json['status']='completed' if summary_json['complete_workflow'] else 'partial_workflow_completed'
+    summary_json['completed_at']=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat()
+    if (TABLE_DIR/'mixed_model_power_summary.csv').exists():
+        summary_json['mixed_model_simulation']=pd.read_csv(TABLE_DIR/'mixed_model_power_summary.csv').to_dict('records')
+    (OUT_DIR/'analysis_summary.json').write_text(json.dumps(summary_json,ensure_ascii=False,indent=2),encoding='utf-8')
 
 
 if __name__=="__main__":main()

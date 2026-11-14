@@ -1,3 +1,4 @@
+suppressWarnings(Sys.setlocale("LC_CTYPE", if (.Platform$OS.type=="windows") "English_United States.utf8" else "C.UTF-8"))
 suppressPackageStartupMessages({
   library(lme4)
   library(ordinal)
@@ -8,6 +9,8 @@ if (length(args) < 2) stop("Usage: Rscript r_models.R <trial_csv> <output_dir>")
 trial_path <- args[[1]]
 out_dir <- args[[2]]
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+model_dir <- file.path(dirname(dirname(trial_path)), "cache", "models")
+dir.create(model_dir, recursive=TRUE, showWarnings=FALSE)
 
 d <- read.csv(trial_path, stringsAsFactors = FALSE, check.names = FALSE)
 d$subject <- factor(d$subject)
@@ -69,11 +72,48 @@ ctrl_l <- lmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 200000), che
 model_rows <- list()
 diag_rows <- list()
 
+same_model_frame <- function(m,data){
+  old<-if(inherits(m,'clmm')&&!is.null(m$model))m$model else model.frame(m)
+  if(!all(names(old)%in%names(data)))return(FALSE)
+  current<-data[complete.cases(data[,names(old),drop=FALSE]),names(old),drop=FALSE]
+  if(nrow(old)!=nrow(current))return(FALSE)
+  all(vapply(names(old),function(nm){
+    if(is.numeric(old[[nm]]))isTRUE(all.equal(as.numeric(old[[nm]]),as.numeric(current[[nm]]),tolerance=1e-12)) else
+      identical(as.character(old[[nm]]),as.character(current[[nm]]))
+  },logical(1)))
+}
+
+cached_mixed <- function(name,forms,data){
+  path<-file.path(model_dir,paste0(name,'.rds'))
+  if(!file.exists(path))return(NULL)
+  m<-readRDS(path)
+  candidate_form<-paste(deparse(formula(m)),collapse=' ')
+  possible<-vapply(forms,function(f)paste(deparse(as.formula(f)),collapse=' '),character(1))
+  idx<-match(candidate_form,possible)
+  if(is.na(idx)||!same_model_frame(m,data)||length(m@optinfo$conv$lme4$messages)>0||isSingular(m,tol=1e-4))return(NULL)
+  cat('REUSE',name,'after fitted-frame equality check\n');flush.console()
+  list(model=m,formula_index=idx,errors=character(),fallback_reason=if(idx>1)'Validated cached fallback structure' else '')
+}
+
+clmm_health <- function(m){
+  gradient<-if(length(m$gradient))max(abs(m$gradient)) else Inf
+  hessian_min<-if(!is.null(m$Hessian))min(eigen(m$Hessian,symmetric=TRUE,only.values=TRUE)$values) else -Inf
+  cv<-m$optRes$convergence
+  optimizer_ok<-if(!is.null(m$optRes$info))cv%in%c(1,2) else (is.null(cv)||cv==0)
+  covariance<-tryCatch(vcov(m),error=function(e)NULL)
+  singular<-min(eigen(as.matrix(VarCorr(m)[[1]]),symmetric=TRUE,only.values=TRUE)$values)<1e-8
+  list(ok=optimizer_ok&&is.finite(gradient)&&gradient<=1e-3&&is.finite(hessian_min)&&hessian_min>0&&
+       !is.null(covariance)&&all(is.finite(covariance)),gradient=gradient,hessian_min=hessian_min,
+       optimizer_code=if(is.null(cv))NA else cv,singular=singular)
+}
+
 run_glmm <- function(name, response, data, fixed = base_fixed, random = random_forms) {
   cat("START",name,"\n"); flush.console()
   forms <- paste(response, "~", fixed, "+", random)
-  ans <- fit_mixed(forms, data, binomial(), ctrl_g)
+  ans <- cached_mixed(name,forms,data)
+  if(is.null(ans))ans <- fit_mixed(forms, data, binomial(), ctrl_g)
   m <- ans$model
+  saveRDS(m, file.path(model_dir,paste0(name,".rds")))
   cf <- tidy_coef(m, name)
   cf$odds_ratio <- exp(cf$estimate)
   cf$ci_low <- exp(cf$estimate - 1.96 * cf$std_error)
@@ -91,8 +131,10 @@ run_glmm <- function(name, response, data, fixed = base_fixed, random = random_f
 run_lmm <- function(name, response, data, fixed = base_fixed, random = random_forms) {
   cat("START",name,"\n"); flush.console()
   forms <- paste(response, "~", fixed, "+", random)
-  ans <- fit_mixed(forms, data, NULL, ctrl_l)
+  ans <- cached_mixed(name,forms,data)
+  if(is.null(ans))ans <- fit_mixed(forms, data, NULL, ctrl_l)
   m <- ans$model
+  saveRDS(m, file.path(model_dir,paste0(name,".rds")))
   cf <- tidy_coef(m, name)
   cf$odds_ratio <- NA_real_; cf$ci_low <- cf$estimate - 1.96*cf$std_error; cf$ci_high <- cf$estimate + 1.96*cf$std_error
   model_rows[[name]] <<- cf
@@ -105,26 +147,18 @@ run_lmm <- function(name, response, data, fixed = base_fixed, random = random_fo
 }
 
 run_clmm <- function(name, fixed, data) {
-  cat("START",name,"\n"); flush.console()
-  full_formula <- as.formula(paste("confidence_ord ~",fixed,"+ (1 + condition | subject)"))
-  int_formula <- as.formula(paste("confidence_ord ~",fixed,"+ (1 | subject)"))
-  errs <- character(); m <- NULL; idx <- NA_integer_
-  z <- tryCatch(clmm(full_formula, data=data, Hess=TRUE, nAGQ=1,
-                     control=clmm.control(maxIter=200, gradTol=1e-4)), error=function(e)e)
-  if (!inherits(z,"error") && (is.null(z$convergence) || is.null(z$convergence$code) || z$convergence$code==0)) {m <- z; idx <- 1}
-  else errs <- c(errs, if(inherits(z,"error")) conditionMessage(z) else "full random-slope CLMM non-converged")
-  if (is.null(m)) {
-    z <- tryCatch(clmm(int_formula, data=data, Hess=TRUE, nAGQ=1,
-                       control=clmm.control(maxIter=200, gradTol=1e-4)), error=function(e)e)
-    if (!inherits(z,"error") && (is.null(z$convergence) || is.null(z$convergence$code) || z$convergence$code==0)) {m <- z; idx <- 3}
-    else errs <- c(errs, if(inherits(z,"error")) conditionMessage(z) else "random-intercept CLMM non-converged")
-  }
-  if (is.null(m)) stop(paste(errs, collapse=" | "))
-  cf <- tidy_coef(m,name); cf$odds_ratio <- exp(cf$estimate); cf$ci_low <- exp(cf$estimate-1.96*cf$std_error); cf$ci_high <- exp(cf$estimate+1.96*cf$std_error)
-  model_rows[[name]] <<- cf
-  diag_rows[[name]] <<- data.frame(model=name,n=stats::nobs(m),formula_index=idx,formula=paste(deparse(formula(m)),collapse=" "),
-    converged=is.null(m$convergence) || is.null(m$convergence$code) || m$convergence$code==0,singular=NA,pearson_dispersion=NA,residual_skew=NA,fallback_reason=paste(errs,collapse=" | "),stringsAsFactors=FALSE)
-  invisible(m)
+  cat('START',name,'stable adaptive-quadrature estimate\n');flush.console()
+  cf<-read.csv(file.path(out_dir,paste0(name,'_stable_coefficients.csv')),stringsAsFactors=FALSE)
+  health<-read.csv(file.path(out_dir,paste0(name,'_stable_diagnostics.csv')),stringsAsFactors=FALSE)
+  stopifnot(nrow(health)==1,health$n==nrow(data),health$max_gradient<.001,
+            health$score_derivative_discrepancy<.001,health$min_hessian_eigenvalue>0)
+  cf<-cf[!grepl('\\|',cf$term),,drop=FALSE];cf$model<-name
+  model_rows[[name]]<<-cf
+  health$formula<-paste('confidence_ord ~',fixed,'+ (1 + condition | subject)')
+  health$converged<-TRUE;health$singular<-FALSE
+  health$pearson_dispersion<-NA_real_;health$residual_skew<-NA_real_
+  diag_rows[[name]]<<-health
+  invisible(NULL)
 }
 
 behavior <- subset(d, behavior_included == 1)

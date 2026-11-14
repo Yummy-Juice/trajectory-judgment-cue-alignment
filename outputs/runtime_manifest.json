@@ -1,9 +1,39 @@
 {
-  "timestamp": "2026-07-13T19:12:49+0800",
+  "timestamp": "2026-11-05T13:05:16.243885+08:00",
   "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
   "platform": "Windows-11-10.0.26200-SP0",
   "participants": 393,
   "random_seed": 20260713,
-  "command": "run_analysis.py --skip-models",
-  "r_version": ""
+  "command": "run_analysis.py --reuse-models",
+  "python_packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "statsmodels": "0.14.6",
+    "scikit-learn": "1.5.1",
+    "matplotlib": "3.10.8",
+    "python-calamine": "0.3.2",
+    "python-docx": "1.1.0"
+  },
+  "revision": "second revision; MLE and metric-specific extensions; separate questionnaire behavior source",
+  "r_version": "Rscript (R) version 4.4.0 (2024-04-24)",
+  "scanpath_bootstrap": {
+    "seed": 20260716,
+    "resamples": 3500,
+    "random_stream": "reinitialized for each metric",
+    "contrast_order": [
+      "permutation_p_fdr",
+      "dyad"
+    ]
+  },
+  "scanpath_bootstrap_update": {
+    "timestamp": "2026-11-12T22:12:25.031044+08:00",
+    "operation": "Recomputed selected scanpath bootstrap intervals from completed DSM and participant-rate tables; regenerated the result report",
+    "calculation": "revision_metrics.selected_scanpath_contrasts(dsm, duration_rates, 20260713)",
+    "source_tables": [
+      "dsm_results_by_metric.csv",
+      "duration_dyad_subject_rates_by_metric.csv"
+    ],
+    "output_table": "scanpath_selected_contrasts_by_metric.csv"
+  }
 }

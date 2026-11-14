@@ -1,0 +1,14 @@
+{
+  "software": "G*Power 3.1.9.7",
+  "execution": "Native Windows application control messages",
+  "expected_scenarios": 291,
+  "completed_scenarios": 291,
+  "scenario_ids_complete_and_unique": true,
+  "status": "completed",
+  "calculation_role": "Revision-stage design evaluation",
+  "gpower_gui_analysis_types": [
+    "A priori",
+    "Sensitivity"
+  ],
+  "unit": "Defined per scenario; participant count for participant-level tests"
+}

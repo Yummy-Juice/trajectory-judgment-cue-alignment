@@ -1,2 +1,2 @@
-status,return_code,detail
-success,0,"All behavior and AOI mixed models completed; full random structures were retained unless singular/non-convergent diagnostics triggered fallback."
+﻿status,return_code,command
+success,0,Rscript r_models.R cache/behavior_model_input.csv outputs/tables

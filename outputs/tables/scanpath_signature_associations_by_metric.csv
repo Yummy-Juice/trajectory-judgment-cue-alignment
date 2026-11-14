@@ -1,0 +1,9 @@
+﻿metric,condition,n_selected,n,pearson_r,pearson_p,r_squared,selected_dyads,interpretation
+auc,gravity,0,0,,,,,
+auc,zero_gravity,3,242,-0.2437396370650385,0.00012814881828712366,0.059409010676596694,ball_MED->position_LONG;ball_MED->position_MED;position_MED->ball_MED,descriptive post-selection association
+auc_ratio,gravity,0,0,,,,,
+auc_ratio,zero_gravity,0,0,,,,,
+m_ratio,gravity,0,0,,,,,
+m_ratio,zero_gravity,0,0,,,,,
+meta_d,gravity,0,0,,,,,
+meta_d,zero_gravity,1,234,-0.16418723578408884,0.01189566204308209,0.02695744839441998,ball_MED->position_LONG,descriptive post-selection association

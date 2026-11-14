@@ -1,0 +1,14 @@
+{
+  "total_native_gpower_records": 291,
+  "requested_inputs_match_native_controls": true,
+  "independently_recomputed_scenarios": 203,
+  "minimum_required_n_checks": 117,
+  "minimum_required_n_checks_passed": 117,
+  "maximum_actual_power_difference": 4.9655540235171713e-08,
+  "sensitivity_effect_roots_checked": 86,
+  "maximum_effect_difference_at_seven_decimal_output": 4.954096410880737e-08,
+  "correlation_protocols_with_exact_option_and_symmetric_critical_values": 76,
+  "logistic_protocols_with_demidenko_variance_correction": 12,
+  "scope": "Numeric, text, and structure checks; independent noncentral t/F and normal-ARE calculations using SciPy",
+  "status": "passed"
+}

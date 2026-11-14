@@ -4,5 +4,86 @@
   "auc_included": 351,
   "eye_included": 353,
   "spam_included": 269,
-  "significant_dsm_fdr": 3
+  "significant_dsm_fdr": 3,
+  "finite_paired_by_metric": {
+    "d_prime": 351,
+    "auc": 258,
+    "meta_d": 247,
+    "m_ratio": 247,
+    "auc_ratio": 258
+  },
+  "workflow_switches": {
+    "rebuild_eye": false,
+    "skip_models": false,
+    "reuse_models": true,
+    "skip_report": false,
+    "skip_figures": false,
+    "skip_simulations": false,
+    "skip_questionnaire": false
+  },
+  "complete_workflow": true,
+  "status": "completed",
+  "completed_at": "2026-11-05T13:06:14.893389+08:00",
+  "mixed_model_simulation": [
+    {
+      "model": "confidence_accuracy_coupling_glmm",
+      "target": "conditionzero_gravity:confidence_within",
+      "true_or": 1.0,
+      "replicates": 100,
+      "usable": 100,
+      "failed": 0,
+      "detection_all_replicates": 0.02,
+      "monte_carlo_se": 0.014,
+      "monte_carlo_ci95_low": 0.0055019675501623,
+      "monte_carlo_ci95_high": 0.0700117907285439,
+      "detection_successful": 0.02,
+      "coverage_95_successful": 0.98,
+      "mean_estimate": 0.0008720697200525,
+      "bias": 0.0008720697200525,
+      "rmse": 0.0309792768389016,
+      "mean_ci_width": 0.1302454797103103,
+      "n_participants": 354,
+      "n_trials": 24615,
+      "role": "Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data"
+    },
+    {
+      "model": "confidence_accuracy_coupling_glmm",
+      "target": "conditionzero_gravity:confidence_within",
+      "true_or": 0.9,
+      "replicates": 100,
+      "usable": 100,
+      "failed": 0,
+      "detection_all_replicates": 0.9,
+      "monte_carlo_se": 0.03,
+      "monte_carlo_ci95_low": 0.8256343384950865,
+      "monte_carlo_ci95_high": 0.9447708629393248,
+      "detection_successful": 0.9,
+      "coverage_95_successful": 0.95,
+      "mean_estimate": -0.1044092093723623,
+      "bias": 0.0009513062854636,
+      "rmse": 0.0314208820954089,
+      "mean_ci_width": 0.1287897099751012,
+      "n_participants": 354,
+      "n_trials": 24615,
+      "role": "Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data"
+    }
+  ],
+  "questionnaire_reporting_update": {
+    "updated_at": "2026-11-11T19:30:37.992273+08:00",
+    "principal_comparisons": {
+      "Q13": "gravity",
+      "Q14": "zero_gravity"
+    },
+    "endpoints_per_question": 10,
+    "metacognitive_measures": [
+      "auc",
+      "meta_d",
+      "m_ratio",
+      "auc_ratio"
+    ],
+    "main_bh_family": "10 endpoints separately within each questionnaire item",
+    "condition_interactions": "supplementary; BH across all six interaction endpoints",
+    "numerical_results_changed": false,
+    "model_refitting_performed": false
+  }
 }

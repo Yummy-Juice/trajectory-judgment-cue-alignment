@@ -1,0 +1,4666 @@
+{
+  "software": "G*Power 3.1.9.7",
+  "specification_version": 1,
+  "effect_selection": "Hypothetical planning grid; not fitted observed effects",
+  "timing": "Revision-stage evaluation, irrespective of the GUI label A priori",
+  "multiplicity": "Alpha .005, .05/16 and .05/64 are conservative Bonferroni planning scenarios, not BH-FDR equivalences",
+  "scenarios": [
+    {
+      "id": "historical-001",
+      "group": "historical",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "One",
+        "Effect size dz": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Audit of the original single-test calculation",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-001",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-002",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-003",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-004",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-005",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-006",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-007",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-008",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-009",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-010",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-011",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-012",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-013",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-014",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-015",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-016",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-017",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-018",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-019",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-020",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-021",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-022",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-023",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-024",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-025",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-026",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-027",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-028",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-029",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-030",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-031",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-032",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-033",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-034",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-035",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-036",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-037",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-038",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-039",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-040",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-041",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-042",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-043",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-044",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-045",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-046",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-047",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-048",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-049",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-050",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-051",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.01,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-052",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-053",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-054",
+      "group": "paired",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size dz": 0.5,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95
+      },
+      "role": "Participant-level paired condition differences",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-001",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-002",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-003",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-004",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-005",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-006",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-007",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-008",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-009",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-010",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-011",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "signed-rank-012",
+      "group": "signed-rank",
+      "family": "t tests",
+      "test": "Means: Wilcoxon signed-rank test (matched pairs)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Parent distribution": "Normal",
+        "Effect size dz": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9
+      },
+      "role": "Normal location-shift planning benchmark for the rank robustness check",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-001",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-002",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-003",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-004",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-005",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-006",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-007",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-008",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-009",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-010",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-011",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-012",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-013",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-014",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-015",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-016",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-017",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-018",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.2,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-019",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-020",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-021",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-022",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-023",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-024",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.25,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-025",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-026",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-027",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-028",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-029",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-030",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.3,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-031",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-032",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-033",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-034",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-035",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-036",
+      "group": "correlation",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Correlation ρ H1": 0.4,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.95,
+        "Correlation ρ H0": 0
+      },
+      "role": "Independent participants, bivariate-normal Pearson correlation",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-001",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-002",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-003",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-004",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-005",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-006",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.3,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-007",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-008",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-009",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-010",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-011",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-012",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.5,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-013",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-014",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-015",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-016",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-017",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-groups-018",
+      "group": "extreme-groups",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect size d": 0.8,
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Allocation ratio N2/N1": 1
+      },
+      "role": "Balanced independent-group benchmark for exploratory DSM contrasts",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-001",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-002",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-003",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-004",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-005",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-006",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-007",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-008",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.02,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-009",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-010",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-011",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-012",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-013",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-014",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-015",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-016",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.05,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-017",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-018",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-019",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-020",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-021",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-022",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-023",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-024",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.1,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-025",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-026",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-027",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-028",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-029",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-030",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-031",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-032",
+      "group": "regression",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "A priori",
+      "inputs": {
+        "Effect size f²": 0.15,
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 3
+      },
+      "role": "Classical fixed-design coefficient test; one predictor matches the continuous association design",
+      "unit": "participants"
+    },
+    {
+      "id": "logistic-reference-001",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.8,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-002",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.8,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-003",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.8,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-004",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.8,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-005",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.9,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-006",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.9,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-007",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.9,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-008",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.9,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-009",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.95,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-010",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.95,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-011",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.95,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "logistic-reference-012",
+      "group": "logistic-reference",
+      "family": "z tests",
+      "test": "Logistic regression",
+      "mode": "A priori",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Odds ratio": 0.95,
+        "Pr(Y=1|X=1) H0": 0.65,
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "R² other X": 0.25,
+        "X distribution": "Normal",
+        "X parm μ": 0,
+        "X parm σ": 1
+      },
+      "role": "Illustration for independent binary outcomes; not a mixed-model participant requirement",
+      "unit": "independent binary observations"
+    },
+    {
+      "id": "paired-sensitivity-001",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 29
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-002",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 29
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-003",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 29
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-004",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 29
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-005",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 393
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-006",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 393
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-007",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 393
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-008",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 393
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-009",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 354
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-010",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 354
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-011",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 354
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-012",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 354
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-013",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 351
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-014",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 351
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-015",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 351
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-016",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 351
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-017",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 353
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-018",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 353
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-019",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 353
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-020",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 353
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-021",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 258
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-022",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 258
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-023",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 258
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-024",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 258
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-025",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 247
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-026",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 247
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-027",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 247
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-028",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 247
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-029",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 269
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-030",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 269
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-031",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 269
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "paired-sensitivity-032",
+      "group": "paired-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two dependent means (matched pairs)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 269
+      },
+      "role": "Detectable standardized paired difference at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-001",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 29,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-002",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 29,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-003",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 29,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-004",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 29,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-005",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 393,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-006",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 393,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-007",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 393,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-008",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 393,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-009",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 290,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-010",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 290,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-011",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 290,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-012",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 290,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-013",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 272,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-014",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 272,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-015",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 272,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-016",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 272,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-017",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 287,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-018",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 287,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-019",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 287,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-020",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 287,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-021",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 263,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-022",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 263,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-023",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 263,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-024",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 263,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-025",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 257,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-026",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 257,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-027",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 257,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-028",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 257,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-029",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 254,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-030",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 254,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-031",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 254,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-032",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 254,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-033",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 242,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-034",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 242,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-035",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 242,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-036",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 242,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-037",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 234,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-038",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 234,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-039",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 234,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "correlation-sensitivity-040",
+      "group": "correlation-sensitivity",
+      "family": "Exact",
+      "test": "Correlation: Bivariate normal model",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "Effect direction": "r ≥ ρ",
+        "α err prob": 0.005,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 234,
+        "Correlation ρ H0": 0
+      },
+      "role": "Detectable positive Pearson correlation at the stated eligible n",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-001",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-002",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-003",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-004",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-005",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-006",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 59,
+        "Sample size group 2": 59
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-007",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-008",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-009",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-010",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-011",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-012",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 60
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-013",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-014",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-015",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-016",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-017",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-018",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 61,
+        "Sample size group 2": 61
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-019",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-020",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-021",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-022",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-023",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-024",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 63
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-025",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-026",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-027",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-028",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-029",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "extreme-sensitivity-030",
+      "group": "extreme-sensitivity",
+      "family": "t tests",
+      "test": "Means: Difference between two independent means (two groups)",
+      "mode": "Sensitivity",
+      "inputs": {
+        "Tail(s)": "Two",
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Sample size group 1": 64,
+        "Sample size group 2": 64
+      },
+      "role": "Classical independent-group detectable effect at actual DSM group sizes",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-001",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-002",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-003",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-004",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-005",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-006",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 234,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-007",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-008",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-009",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-010",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-011",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-012",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 242,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-013",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-014",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-015",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-016",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-017",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-018",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 254,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-019",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-020",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.05,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-021",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-022",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.003125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-023",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.8,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    },
+    {
+      "id": "regression-sensitivity-024",
+      "group": "regression-sensitivity",
+      "family": "F tests",
+      "test": "Linear multiple regression: Fixed model, R² increase",
+      "mode": "Sensitivity",
+      "inputs": {
+        "α err prob": 0.00078125,
+        "Power (1-β err prob)": 0.9,
+        "Total sample size": 257,
+        "Number of tested predictors": 1,
+        "Total number of predictors": 1
+      },
+      "role": "Classical coefficient-test sensitivity; HC3/permutation/FDR power is not calculated by G*Power",
+      "unit": "participants"
+    }
+  ]
+}

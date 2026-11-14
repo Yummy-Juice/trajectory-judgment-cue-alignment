@@ -1,0 +1,9 @@
+﻿condition,status,n
+gravity,constant_confidence,61
+gravity,d_prime_near_zero,3
+gravity,ok,287
+gravity,qc_failed,42
+zero_gravity,constant_confidence,79
+zero_gravity,d_prime_near_zero,9
+zero_gravity,ok,263
+zero_gravity,qc_failed,42

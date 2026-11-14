@@ -30,7 +30,7 @@ authors:
     given-names: Shanguang
   - family-names: Xiao
     given-names: Yi
-version: 1.0.0
-date-released: 2026-09-20
+version: 2.0.0
+date-released: 2026-11-14
 license: MIT
 repository-code: "https://github.com/Yummy-Juice/trajectory-judgment-cue-alignment"
