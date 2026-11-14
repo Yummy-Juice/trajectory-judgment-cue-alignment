@@ -1,5 +1,5 @@
 {
-  "project_title": "PB&R revision analysis: behavior, metacognition, gaze allocation, and scan paths",
+  "project_title": "Trajectory judgment and metacognition analyses",
   "random_seed": 20260713,
   "conditions": [
     "gravity",
@@ -34,7 +34,6 @@
     5000
   ],
   "figure_dpi": 600,
-  "revision": "second_revision_20261105",
   "metacognition": {
     "metrics": [
       "auc",
@@ -55,7 +54,30 @@
     "dprime_sensitivity_threshold": 0.1,
     "selected_dyad_bootstrap_replicates": 3500
   },
-  "revision_simulations": {
+  "questionnaire": {
+    "behavior_source": "questionnaire_public/behavioral_data",
+    "main_contrasts": [
+      "Q13_gravity",
+      "Q14_zero_gravity"
+    ],
+    "link": "exact_public_participant_id_to_filename_stem",
+    "condition_interactions": "condition_by_Q14_interpretation"
+  },
+  "ordinal_numerics": {
+    "primary_nodes_per_dimension": 1,
+    "sensitivity_nodes_per_dimension": 15,
+    "validation_nodes_per_dimension": 21,
+    "maximum_numerical_gradient": 0.001,
+    "maximum_parameter_change_in_standard_errors": 0.01,
+    "random_structure": "participant intercept and condition slope",
+    "implementation": "stable cumulative-logit Gaussian random-effects likelihood"
+  },
+  "figure_formats": [
+    "png",
+    "pdf"
+  ],
+  "analysis_id": "trajectory_judgment_metacognition",
+  "design_simulations": {
     "paired_replicates": 5000,
     "paired_assumed_dz": [
       0,
@@ -71,27 +93,5 @@
       0.9
     ],
     "parallel_workers": 8
-  },
-  "questionnaire": {
-    "behavior_source": "questionnaire_public/behavioral_data",
-    "main_contrasts": [
-      "Q13_gravity",
-      "Q14_zero_gravity"
-    ],
-    "reviewer_moderation": "condition_by_Q14_interpretation",
-    "link": "exact_public_participant_id_to_filename_stem"
-  },
-  "ordinal_numerics": {
-    "primary_nodes_per_dimension": 1,
-    "sensitivity_nodes_per_dimension": 15,
-    "validation_nodes_per_dimension": 21,
-    "maximum_numerical_gradient": 0.001,
-    "maximum_parameter_change_in_standard_errors": 0.01,
-    "random_structure": "participant intercept and condition slope",
-    "implementation": "stable cumulative-logit Gaussian random-effects likelihood"
-  },
-  "figure_formats": [
-    "png",
-    "pdf"
-  ]
+  }
 }

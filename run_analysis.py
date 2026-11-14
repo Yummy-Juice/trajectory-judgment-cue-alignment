@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""End-to-end, OSF-ready analysis pipeline for the PB&R revision dataset.
+"""End-to-end analysis pipeline for trajectory judgments, metacognition, and gaze.
 
 Run from this folder with ``python run_analysis.py``. The script discovers
 participants from matched CSV/XLSX stems, applies the prespecified filters,
@@ -32,7 +32,7 @@ import pandas as pd
 from matplotlib.colors import TwoSlopeNorm
 from scipy import stats
 from sklearn.metrics import roc_auc_score
-from statsmodels.formula.api import ols
+from statsmodels.regression.linear_model import OLS
 from statsmodels.stats.multitest import multipletests
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -381,7 +381,7 @@ def analyze_dsm(df: pd.DataFrame, representation: str) -> tuple[pd.DataFrame,pd.
                          "high_minus_low":diff,"permutation_p":p,"welch_t":wt.statistic,"welch_p":wt.pvalue})
             gg=g[["rate","auc"]].dropna()
             if len(gg)>=20 and gg.auc.nunique()>2:
-                m=ols("rate ~ auc",data=gg).fit(cov_type="HC3")
+                m=OLS.from_formula("rate ~ auc",data=gg).fit(cov_type="HC3")
                 continuous.append({"representation":representation,"condition":cond,"dyad":dyad,"n":len(gg),"auc_slope":m.params.get("auc",np.nan),"robust_se":m.bse.get("auc",np.nan),"p_value":m.pvalues.get("auc",np.nan),"r_squared":m.rsquared})
     res=pd.DataFrame(rows); cont=pd.DataFrame(continuous)
     if not res.empty:
@@ -422,7 +422,7 @@ def run_r_models(input_path: Path, reuse: bool=False) -> None:
                   'eye_mixed_model_coefficients.csv','eye_model_diagnostics.csv']
         if not all((TABLE_DIR/p).exists() for p in required):
             raise RuntimeError('Requested model reuse but required outputs are missing')
-        write_log('Reusing completed second-revision R models after direct input-table equality check')
+        write_log('Reusing completed R models after direct input-table equality check')
         return
     rscript=shutil.which("Rscript")
     if not rscript:
@@ -581,7 +581,7 @@ def write_runtime_manifest(participants:list[str]) -> None:
     info={"timestamp":datetime.now(ZoneInfo('Asia/Shanghai')).isoformat(),"python":sys.version,"platform":platform.platform(),
           "participants":len(participants),"random_seed":SEED,"command":" ".join(sys.argv)}
     info['python_packages']={name:package_version(name) for name in ['numpy','pandas','scipy','statsmodels','scikit-learn','matplotlib','python-calamine','python-docx']}
-    info['revision']='second revision; MLE and metric-specific extensions; separate questionnaire behavior source'
+    info['analysis_scope']='Behavior, metacognition, gaze allocation, scanpaths, and questionnaire analyses'
     info['scanpath_bootstrap']={
         'seed':SEED+3,'resamples':3500,'random_stream':'reinitialized for each metric',
         'contrast_order':['permutation_p_fdr','dyad'],
@@ -643,15 +643,15 @@ def main() -> None:
     participants,file_match=discover_participants();write_log(f"Matched participants: {len(participants)}");save_csv(file_match,"file_matching_audit.csv");write_runtime_manifest(participants)
     trial,qc,file_audit=load_behavior(participants);save_csv(file_audit,"behavior_file_audit.csv");save_csv(qc,"behavior_qc_by_condition.csv")
     summary,effects=summarize_behavior(trial,qc)
-    import revision_metrics
-    summary,effects=revision_metrics.extend_summary(sys.modules[__name__],trial,summary,qc)
+    import metacognition_analysis
+    summary,effects=metacognition_analysis.extend_summary(sys.modules[__name__],trial,summary,qc)
     save_csv(summary,"participant_condition_summary.csv");save_csv(effects,"paired_condition_effects.csv")
     write_log(f"Behavior included: {trial.drop_duplicates('subject').behavior_included.sum()}; AUC included: {trial.drop_duplicates('subject').auc_included.sum()}")
     events,eye_qc,eye_metrics=process_eye(participants,args.rebuild_eye);save_csv(eye_qc,"eye_qc_by_condition.csv");save_csv(eye_metrics,"eye_metrics_subject_condition_region.csv")
     er,dr,totals,auc=build_dyads(events,summary);save_csv(er,"event_dyad_subject_rates.csv");save_csv(dr,"duration_dyad_subject_rates.csv");save_csv(totals,"spam_dsm_dyad_qc.csv")
     event_res,event_cont=analyze_dsm(er,"event");dur_res,dur_cont=analyze_dsm(dr,"duration");dsm=pd.concat([event_res,dur_res],ignore_index=True);cont=pd.concat([event_cont,dur_cont],ignore_index=True)
     save_csv(dsm,"dsm_results_all.csv");save_csv(cont,"dsm_continuous_auc_sensitivity.csv")
-    revision_metrics.extend_dsm(sys.modules[__name__],events,summary,(dsm,cont,er,dr,totals))
+    metacognition_analysis.extend_dsm(sys.modules[__name__],events,summary,(dsm,cont,er,dr,totals))
     support=[]
     for rep,df in [("event",er),("duration",dr)]:
         for (cond,dyad),g in df.groupby(["condition","dyad"]):support.append({"representation":rep,"condition":cond,"dyad":dyad,"n_participants":g.subject.nunique(),"s_support":(g['count']>0).mean(),"i_support_total":g['count'].sum(),"mean_normalized_i_support":g.rate.mean()})
@@ -660,7 +660,7 @@ def main() -> None:
     model_input=prepare_r_input(trial,eye_metrics)
     run_r_models(model_input,reuse=args.skip_models or args.reuse_models)
     normalize_model_diagnostics()
-    revision_metrics.coupling_interpretation(sys.modules[__name__])
+    metacognition_analysis.coupling_interpretation(sys.modules[__name__])
     if not args.skip_questionnaire:
         # Principal comparisons: Q13 groups in gravity; Q14 groups in zero gravity.
         # Both comparisons include all ten endpoints and the four metacognitive measures.
@@ -673,8 +673,8 @@ def main() -> None:
         import questionnaire_moderation
         questionnaire_moderation.run(ROOT,reuse=args.reuse_models)
     if not args.skip_simulations:
-        import revision_simulations
-        revision_simulations.run(ROOT,write_log)
+        import design_simulations
+        design_simulations.run(ROOT,write_log)
     # Generate the fixed 183-mm Nature-style figure system after all source
     # tables and model diagnostics are available.
     if not args.skip_figures:

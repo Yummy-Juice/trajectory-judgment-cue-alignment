@@ -1,4 +1,4 @@
-"""Reviewer-requested Q14 condition-by-interpretation moderation."""
+"""Q14 condition-by-interpretation models and paired-difference comparisons."""
 from pathlib import Path
 import json
 import shutil
@@ -71,9 +71,9 @@ def run(root:Path,reuse=False):
                          scale='interaction proportional odds ratio' if metric=='confidence' else 'interaction odds ratio'))
     result=pd.DataFrame(rows)
     result['p_bh_all_six']=multipletests(result.p_value.fillna(1),method='fdr_bh')[1]
-    result['p_bh_reviewer_primary_three']=np.nan
+    result['p_bh_accuracy_confidence_auc']=np.nan
     primary=result.metric.isin(['accuracy','confidence','auc'])
-    result.loc[primary,'p_bh_reviewer_primary_three']=multipletests(result.loc[primary,'p_value'].fillna(1),method='fdr_bh')[1]
+    result.loc[primary,'p_bh_accuracy_confidence_auc']=multipletests(result.loc[primary,'p_value'].fillna(1),method='fdr_bh')[1]
     result.to_csv(out/'questionnaire_moderation_summary.csv',index=False,encoding='utf-8-sig')
     return result
 

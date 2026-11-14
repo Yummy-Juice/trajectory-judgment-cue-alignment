@@ -1,4 +1,4 @@
-"""Equal-variance SDT metrics adapted from the author-provided reference.
+"""Equal-variance SDT and metacognitive measures.
 Maniscalco and Lau (2012), DOI:10.1016/j.concog.2011.09.021.
 AUC-ratio: criterion projection in Rahnev (2025), DOI:10.1038/s41467-025-56117-0.
 """

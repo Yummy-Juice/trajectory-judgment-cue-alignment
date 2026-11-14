@@ -170,7 +170,7 @@ BEHAVIOR_LABELS = {
 def effect_forest(ax: plt.Axes, forest: pd.DataFrame, *, xlabel: str,
                   title: str, lower_text: str, higher_text: str,
                   xlim: tuple[float, float]) -> None:
-    """The first-revision Figure 1a drawing code, shared with Figure S4."""
+    """Shared effect-interval drawing code for Figures 1 and S4."""
     y = np.arange(len(forest))[::-1]
     ax.axvspan(min(-.5, xlim[0]), 0, color=COL["pale"], zorder=-3)
     ax.axvline(0, color=COL["mid"], lw=.75, ls=(0, (3, 2)), zorder=0)
@@ -586,7 +586,7 @@ def figure4_scanpaths() -> None:
     state_labels = ["Ball\nMedium", "Ball\nLong", "Position\nMedium", "Position\nLong"]
 
     def transition_matrix(ax_a, rows, label):
-        # Retain the first-revision cell values, significant-cell borders,
+        # Draw normalized cell values and significant-cell borders with
         # two-line state labels, source/destination labels and colorbar.
         delta_matrix = rows.pivot(index="source", columns="destination", values="delta_pp").reindex(
             index=state_order, columns=state_order)
@@ -939,7 +939,7 @@ def response_bars(axes):
     focal_n = billiards_n+zero_n
     colors = [COL['gravity_soft'], COL['zero_soft']]
 
-    # The first-revision make_figure: identical counts, denominators and width.
+    # Plot counts for the focal Q14 response options.
     axes[0].bar(['2D plane motion\n(like billiards)',
                  '3D zero/microgravity\n(no downward gravity)'],
                 [billiards_n, zero_n], color=colors, width=.65, alpha=.78)

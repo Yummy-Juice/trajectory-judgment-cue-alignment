@@ -44,7 +44,7 @@
       "mean_ci_width": 0.1302454797103103,
       "n_participants": 354,
       "n_trials": 24615,
-      "role": "Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data"
+      "role": "Parametric simulation on the QC-valid trial design with fitted nuisance parameters"
     },
     {
       "model": "confidence_accuracy_coupling_glmm",
@@ -65,10 +65,10 @@
       "mean_ci_width": 0.1287897099751012,
       "n_participants": 354,
       "n_trials": 24615,
-      "role": "Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data"
+      "role": "Parametric simulation on the QC-valid trial design with fitted nuisance parameters"
     }
   ],
-  "questionnaire_reporting_update": {
+  "questionnaire_analysis_specification": {
     "updated_at": "2026-11-11T19:30:37.992273+08:00",
     "principal_comparisons": {
       "Q13": "gravity",
@@ -82,8 +82,6 @@
       "auc_ratio"
     ],
     "main_bh_family": "10 endpoints separately within each questionnaire item",
-    "condition_interactions": "supplementary; BH across all six interaction endpoints",
-    "numerical_results_changed": false,
-    "model_refitting_performed": false
+    "condition_interactions": "supplementary; BH across all six interaction endpoints"
   }
 }

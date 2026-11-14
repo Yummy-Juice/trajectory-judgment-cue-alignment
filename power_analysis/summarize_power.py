@@ -116,7 +116,7 @@ def summarize(output):
                                   observed_retention=fraction,
                                   expected_matched_records_before_endpoint_qc=math.ceil(row["required_n"]/fraction),
                                   attained_eligible_requirement=observed_n >= row["required_n"],
-                                  interpretation="Future planning extrapolation using observed endpoint retention; expected count, not a prospective recruitment justification or assurance"))
+                                  interpretation="Expected matched-record counts for future studies under observed endpoint-retention assumptions"))
     write_csv(output / "retention_planning.csv", retention)
 
     dsm = read_csv(tables / "dsm_results_by_metric.csv")
@@ -144,7 +144,7 @@ def summarize(output):
     keep = ["model", "target", "true_or", "replicates", "usable", "failed", "n_participants",
             "n_trials", "detection_all_replicates", "monte_carlo_se",
             "monte_carlo_ci95_low", "monte_carlo_ci95_high", "coverage_95_successful", "role"]
-    write_csv(output / "existing_mixed_model_simulation.csv",
+    write_csv(output / "model_based_simulation.csv",
               [{k: r[k] for k in keep} for r in mixed])
     print(f"Summarized {len(required)} required-N and {len(sensitivity)} sensitivity scenarios.")
 

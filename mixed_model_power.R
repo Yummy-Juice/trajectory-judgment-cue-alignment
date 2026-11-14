@@ -78,7 +78,7 @@ rows <- lapply(split(results,results$scenario),function(g){
       rmse=sqrt(mean((good$estimate-good$true_log_effect)^2)),
       mean_ci_width=mean(good$ci95_high-good$ci95_low),
       n_participants=g$n_participants[[1]],n_trials=g$n_trials[[1]],
-      role="Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data")
+      role="Parametric simulation on the QC-valid trial design with fitted nuisance parameters")
 })
 summary_path<-file.path(root,"outputs/tables/mixed_model_power_summary.csv")
 write.csv(do.call(rbind,rows),summary_path,row.names=FALSE,fileEncoding="UTF-8")

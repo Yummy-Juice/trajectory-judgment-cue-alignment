@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Analyze the two requested condition-specific questionnaire group contrasts.
+"""Analyze two condition-specific questionnaire group contrasts.
 
 Q13 defines groups for gravity-condition behavior only; Q14 separately
 defines groups for zero-gravity-condition behavior only. Each comparison
@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent
 PACKAGE_ROOT = ROOT.parent
 if str(PACKAGE_ROOT) not in sys.path:
     sys.path.insert(0, str(PACKAGE_ROOT))
-import revision_metrics  # noqa: E402
+import metacognition_analysis  # noqa: E402
 
 DEFAULT_INPUT = ROOT / "questionnaire_data_public.csv"
 DEFAULT_BEHAVIOR_DIR = ROOT / "behavioral_data"
@@ -217,7 +217,7 @@ def analyze_subject_condition(trial: pd.DataFrame, comparison: dict[str, object]
         record.update(accuracy=float("nan"), answer_rt_median=float("nan"),
                       answer_rt_mean=float("nan"), n_positive_answer_rt=0)
 
-    model_record, _, _ = revision_metrics.metric_values(data, eligible=bool(confidence_qc))
+    model_record, _, _ = metacognition_analysis.metric_values(data, eligible=bool(confidence_qc))
     valid_conf_values = confidence.loc[valid_confidence].astype(float)
     positive_conf_rt = valid_confidence & confidence_rt.gt(0) & np.isfinite(confidence_rt)
     conf_rt_values = confidence_rt.loc[positive_conf_rt].astype(float)
@@ -402,7 +402,7 @@ def analyze(questionnaire_path: Path = DEFAULT_INPUT,
     diagnostics: list[dict[str, object]] = []
 
     # Produce both conditions for all matched public respondents. These
-    # condition-level metrics also supply the two requested group contrasts.
+    # condition-level metrics also supply the two condition-specific group contrasts.
     for participant in questionnaire["participant_id"].astype(str):
         behavior_cache[participant] = pd.read_csv(path_map[participant])
         for condition, gravity_code in [("gravity", 1), ("zero_gravity", 0)]:
@@ -488,7 +488,7 @@ def analyze(questionnaire_path: Path = DEFAULT_INPUT,
                 n_qc_eligible = int(len(eligible_frame))
                 n_finite = int(len(finite))
                 flow_rows.append({
-                    "analysis_scope": "requested_condition_comparison",
+                    "analysis_scope": "condition_specific_group_comparison",
                     "questionnaire_item": item,
                     "condition": comparison["condition"],
                     "interpretation_group": group,
@@ -529,7 +529,7 @@ def analyze(questionnaire_path: Path = DEFAULT_INPUT,
             comparison_rows.append(stats_row)
 
         flow_rows.append({
-            "analysis_scope": "requested_condition_comparison",
+            "analysis_scope": "condition_specific_group_comparison",
             "questionnaire_item": item,
             "condition": comparison["condition"],
             "interpretation_group": "outside_focal_options",
@@ -559,7 +559,7 @@ def analyze(questionnaire_path: Path = DEFAULT_INPUT,
             comparisons.loc[meta_mask, "p_value"]
         ).to_numpy()
 
-    # Q14 two-condition rows support the reviewer's moderation analysis; they
+    # Q14 two-condition rows support the condition-by-interpretation models. They
     # are sample accounting, not additional inferential group comparisons.
     q14_focal = questionnaire.loc[
         questionnaire[Q14_COLUMN].isin([BILLIARDS, Q14_ZERO_GRAVITY])
@@ -652,7 +652,7 @@ def analyze(questionnaire_path: Path = DEFAULT_INPUT,
         }
 
     summary = {
-        "analysis": "Two requested exploratory condition-specific questionnaire group comparisons",
+        "analysis": "Two exploratory condition-specific questionnaire group comparisons",
         "primary_group_comparisons": [
             {
                 "questionnaire_item": spec["questionnaire_item"],

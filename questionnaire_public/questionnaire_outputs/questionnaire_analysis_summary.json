@@ -1,5 +1,5 @@
 {
-  "analysis": "Two requested exploratory condition-specific questionnaire group comparisons",
+  "analysis": "Two exploratory condition-specific questionnaire group comparisons",
   "source_questionnaire": "questionnaire_public/questionnaire_data_public.csv",
   "source_behavior": "questionnaire_public/behavioral_data/*.csv",
   "join": {

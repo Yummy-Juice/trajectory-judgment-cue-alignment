@@ -2,12 +2,12 @@
   "software": "G*Power 3.1.9.7",
   "specification_version": 1,
   "effect_selection": "Hypothetical planning grid; not fitted observed effects",
-  "timing": "Revision-stage evaluation, irrespective of the GUI label A priori",
+  "timing": "Exploratory design sensitivity and hypothetical sample-size planning",
   "multiplicity": "Alpha .005, .05/16 and .05/64 are conservative Bonferroni planning scenarios, not BH-FDR equivalences",
   "scenarios": [
     {
-      "id": "historical-001",
-      "group": "historical",
+      "id": "paired-reference-001",
+      "group": "paired-reference",
       "family": "t tests",
       "test": "Means: Difference between two dependent means (matched pairs)",
       "mode": "A priori",
@@ -17,7 +17,7 @@
         "α err prob": 0.05,
         "Power (1-β err prob)": 0.8
       },
-      "role": "Audit of the original single-test calculation",
+      "role": "One-sided paired-samples reference scenario",
       "unit": "participants"
     },
     {

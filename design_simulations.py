@@ -34,7 +34,7 @@ def design_sensitivity(root: Path):
                 simulated_detection=estimate,monte_carlo_se=np.sqrt(estimate*(1-estimate)/5000),
                 analytic_power=exact,coverage_95=covered.mean(),mean_ci_width=float((2*critical*ses).mean()),
                 detectable_dz_80=brentq(lambda d:power(d)-.8,.0001,.5),
-                role='revision-stage sensitivity conditional on endpoint-specific valid n; not recruitment justification'))
+                role='Design sensitivity conditional on endpoint-specific valid sample sizes'))
     pd.DataFrame(rows).to_csv(root/'outputs/tables/paired_design_sensitivity.csv',index=False,encoding='utf-8-sig')
 
 
@@ -134,7 +134,7 @@ def mixed_model_power(root:Path,log=print):
     shard_folder.mkdir(parents=True,exist_ok=True)
     (root/'outputs/logs').mkdir(parents=True,exist_ok=True)
     config=json.loads((root/'config.json').read_text(encoding='utf-8'))
-    requested_workers=int(config.get('revision_simulations',{}).get('parallel_workers',4))
+    requested_workers=int(config.get('design_simulations',{}).get('parallel_workers',4))
     workers=min(requested_workers,max(1,(os.cpu_count() or 2)//2))
     budget=100
     partitions=np.array_split(np.arange(1,budget+1),workers)
@@ -183,7 +183,7 @@ def mixed_model_power(root:Path,log=print):
             coverage_95_successful=float(((good.ci95_low<=good.true_log_effect)&(good.ci95_high>=good.true_log_effect)).mean()),
             mean_estimate=good.estimate.mean(),bias=error.mean(),rmse=np.sqrt((error**2).mean()),
             mean_ci_width=(good.ci95_high-good.ci95_low).mean(),n_participants=g.n_participants.iloc[0],n_trials=g.n_trials.iloc[0],
-            role='Revision-stage parametric simulation on actual QC-valid design; nuisance parameters estimated from observed data'))
+            role='Parametric simulation on the QC-valid trial design with fitted nuisance parameters'))
     pd.DataFrame(summaries).to_csv(root/'outputs/tables/mixed_model_power_summary.csv',index=False,encoding='utf-8-sig')
 
 

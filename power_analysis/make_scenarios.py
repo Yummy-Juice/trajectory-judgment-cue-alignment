@@ -19,9 +19,9 @@ def scenarios():
                          group=group, family=family, test=test, mode=mode,
                          inputs=inputs, role=role, unit=unit))
 
-    add("historical", "t tests", PAIRED, "A priori",
+    add("paired-reference", "t tests", PAIRED, "A priori",
         {"Tail(s)": "One", "Effect size dz": .5, ALPHA: .05, POWER: .8},
-        "Audit of the original single-test calculation")
+        "One-sided paired-samples reference scenario")
     for effect, alpha, power in product([.1, .15, .2, .25, .3, .5],
                                        [.05, .01, .005], [.8, .9, .95]):
         add("paired", "t tests", PAIRED, "A priori",
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     path = HERE / "scenarios.json"
     content = {"software": "G*Power 3.1.9.7", "specification_version": 1,
                "effect_selection": "Hypothetical planning grid; not fitted observed effects",
-               "timing": "Revision-stage evaluation, irrespective of the GUI label A priori",
+               "timing": "Exploratory design sensitivity and hypothetical sample-size planning",
                "multiplicity": "Alpha .005, .05/16 and .05/64 are conservative Bonferroni planning scenarios, not BH-FDR equivalences",
                "scenarios": scenarios()}
     if path.exists() and json.loads(path.read_text(encoding="utf-8")) != content:

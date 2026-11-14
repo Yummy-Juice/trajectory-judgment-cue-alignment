@@ -21,7 +21,7 @@
   "report_embedded_figures": 7,
   "report_relative_output_links_resolve": true,
   "complete_workflow": true,
-  "questionnaire_response_bar_counts_match_first_revision": true,
+  "questionnaire_response_counts_consistent": true,
   "questionnaire_response_bar_source_rows": 4,
   "questionnaire_figure_width_greater_than_height": true,
   "questionnaire_figure_pixels": [

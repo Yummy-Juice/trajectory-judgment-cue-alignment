@@ -1,6 +1,6 @@
-# Public questionnaire analysis (second-revision comparisons)
+# Questionnaire and task-understanding analyses
 
-This folder contains the de-identified questionnaire records and the matching behavioral CSV files used for the two exploratory comparisons in the second-revision package.
+This folder contains the de-identified questionnaire records and the matching behavioral CSV files used for the two exploratory condition-specific group comparisons.
 
 ## Data and identifiers
 
@@ -16,7 +16,7 @@ The script runs only these two comparisons:
 1. Original Q13: the 3D gravity-understanding group versus the two-dimensional billiards-like group, using behavior in the gravity condition.
 2. Original Q14: the 3D zero/microgravity-understanding group versus the two-dimensional billiards-like group, using behavior in the zero-gravity condition.
 
-For each question, responses outside those two specified options are excluded from the group test. The effect direction is two-dimensional billiards-like minus 3D understanding. Endpoints include accuracy, positive decision-time measures in milliseconds, mean confidence, positive confidence-time measures, type-2 ROC AUC, meta-d-prime, M-ratio, AUC-ratio, and d-prime as a reference. Metacognitive measures use the shared `revision_metrics.metric_values` estimator.
+For each question, responses outside those two specified options are excluded from the group test. The effect direction is two-dimensional billiards-like minus 3D understanding. Endpoints include accuracy, positive decision-time measures in milliseconds, mean confidence, positive confidence-time measures, type-2 ROC AUC, meta-d-prime, M-ratio, AUC-ratio, and d-prime as a reference. Metacognitive measures use the shared `metacognition_analysis.metric_values` estimator.
 
 Each item-condition comparison applies its own behavioral QC. Choice endpoints require at least 24 valid 0/1 stimulus-response trials and at least three correct and three incorrect responses. Confidence endpoints additionally require at least 24 integer 1–7 confidence trials with at least three correct and three incorrect trials. A participant does not need to pass QC in the other condition. Missing confidence does not remove trials from accuracy or decision-time calculations; reaction-time summaries use positive values only.
 
@@ -44,8 +44,8 @@ The script writes the following files to `questionnaire_outputs/`:
 - `questionnaire_all_conditions_metrics.csv` (both behavioral conditions for every matched questionnaire respondent)
 - `questionnaire_trial_model_input.csv` (Q14 focal groups, both conditions, with condition-paired QC flags)
 
-The script does not create figures. `questionnaire_trial_model_input.csv` codes `size_pair` as `LeftScale_RightScale` (for example, `0.8_0.9`) and standardizes each participant's row-order trial index across their file. Dependencies are `pandas`, `numpy`, `scipy`, and `statsmodels`; `revision_metrics.py` is imported from the package root.
+The script does not create figures. `questionnaire_trial_model_input.csv` codes `size_pair` as `LeftScale_RightScale` (for example, `0.8_0.9`) and standardizes each participant's row-order trial index across their file. Dependencies are `pandas`, `numpy`, `scipy`, and `statsmodels`; `metacognition_analysis.py` is imported from the package root.
 
 ## Supplementary condition-by-interpretation analyses
 
-The complete package command also runs `questionnaire_moderation.py` from the package root. This adds Q14 condition-by-interpretation accuracy/ordinal-confidence models and paired-difference comparisons for AUC, meta-d′, signed M-ratio, and AUC-ratio, reported in Supplementary Table S14. These supplementary tests use both conditions from the same eligible participants and six-endpoint BH correction (`p_bh_all_six`); the original three-endpoint correction remains in the CSV for reference. Standalone `analyze_questionnaire.py` runs the two principal condition-specific group comparisons above. Moderation estimates, standardized predictions, diagnostics, and paired subjects are saved beside the group comparison tables.
+The complete package command also runs `questionnaire_moderation.py` from the package root. This adds Q14 condition-by-interpretation accuracy/ordinal-confidence models and paired-difference comparisons for AUC, meta-d′, signed M-ratio, and AUC-ratio, reported in Supplementary Table S14. These supplementary tests use both conditions from the same eligible participants and six-endpoint BH correction (`p_bh_all_six`); accuracy, confidence, and AUC also form a secondary three-endpoint BH family (`p_bh_accuracy_confidence_auc`). Standalone `analyze_questionnaire.py` runs the two principal condition-specific group comparisons above. Moderation estimates, standardized predictions, diagnostics, and paired subjects are saved beside the group comparison tables.

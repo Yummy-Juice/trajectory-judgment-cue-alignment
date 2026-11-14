@@ -15,7 +15,7 @@
     "python-calamine": "0.3.2",
     "python-docx": "1.1.0"
   },
-  "revision": "second revision; MLE and metric-specific extensions; separate questionnaire behavior source",
+  "analysis_scope": "Behavior, metacognition, gaze allocation, scanpaths, and questionnaire analyses",
   "r_version": "Rscript (R) version 4.4.0 (2024-04-24)",
   "scanpath_bootstrap": {
     "seed": 20260716,
@@ -26,10 +26,10 @@
       "dyad"
     ]
   },
-  "scanpath_bootstrap_update": {
+  "scanpath_bootstrap_calculation": {
     "timestamp": "2026-11-12T22:12:25.031044+08:00",
-    "operation": "Recomputed selected scanpath bootstrap intervals from completed DSM and participant-rate tables; regenerated the result report",
-    "calculation": "revision_metrics.selected_scanpath_contrasts(dsm, duration_rates, 20260713)",
+    "operation": "Selected-scanpath bootstrap intervals computed from DSM and participant-rate tables",
+    "calculation": "metacognition_analysis.selected_scanpath_contrasts(dsm, duration_rates, 20260713)",
     "source_tables": [
       "dsm_results_by_metric.csv",
       "duration_dyad_subject_rates_by_metric.csv"

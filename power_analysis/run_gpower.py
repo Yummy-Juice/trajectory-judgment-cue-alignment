@@ -271,7 +271,7 @@ def main():
         "software": "G*Power 3.1.9.7", "execution": "Native Windows application control messages",
         "expected_scenarios": len(jobs), "completed_scenarios": len(completed),
         "scenario_ids_complete_and_unique": set(completed) == set(ids),
-        "status": "completed", "calculation_role": "Revision-stage design evaluation",
+        "status": "completed", "calculation_role": "Design sensitivity and sample-size evaluation",
         "gpower_gui_analysis_types": ["A priori", "Sensitivity"],
         "unit": "Defined per scenario; participant count for participant-level tests",
     }

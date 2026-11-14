@@ -5,7 +5,7 @@
   "completed_scenarios": 291,
   "scenario_ids_complete_and_unique": true,
   "status": "completed",
-  "calculation_role": "Revision-stage design evaluation",
+  "calculation_role": "Design sensitivity and sample-size evaluation",
   "gpower_gui_analysis_types": [
     "A priori",
     "Sensitivity"

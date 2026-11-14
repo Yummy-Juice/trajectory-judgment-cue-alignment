@@ -100,8 +100,8 @@ def ensure(root:Path,kind:str,log=print):
     traces.append(dict(kind=kind,random_dimension=2,nodes=21,nll=validation['nll'],
                        max_gradient=validation['max_marginal_gradient'],score_discrepancy=validation['max_score_derivative_discrepancy'],
                        purpose=validation['purpose'],maximum_difference_in_standard_errors=validation['maximum_difference_in_standard_errors']))
-    # The first revision used nAGQ=1. Retain that primary approximation, with the
-    # accurate integral as an explicitly reported numerical sensitivity analysis.
+    # Use Laplace integration for the primary model and higher-order
+    # quadrature to assess numerical sensitivity.
     selected=root/'cache'/f'ordinal_{kind}_agq1'
     if not input_matches(selected,design,2):
         with threadpool_limits(limits=1):engine.fit(design,sensitivity.with_suffix('.diagnostics.json'),selected,2,1)
@@ -109,7 +109,7 @@ def ensure(root:Path,kind:str,log=print):
     if not healthy(diag):raise RuntimeError(f'Ordinal {kind} primary Laplace fit failed numerical diagnostics')
     traces.append(dict(kind=kind,random_dimension=2,nodes=1,nll=diag['negative_log_likelihood'],
                        max_gradient=diag['max_marginal_gradient'],score_discrepancy=diag['max_score_derivative_discrepancy'],
-                       min_hessian_eigenvalue=diag['min_hessian_eigenvalue'],purpose='primary; original first-revision Laplace approximation'))
+                       min_hessian_eigenvalue=diag['min_hessian_eigenvalue'],purpose='Primary Laplace approximation with one quadrature node per dimension'))
     sigma=np.asarray(diag['random_covariance'])
     if np.linalg.eigvalsh(sigma).min()/np.linalg.eigvalsh(sigma).max()<1e-4:
         raise RuntimeError(f'Ordinal {kind} random covariance is effectively singular; use recorded intercept fallback')
@@ -131,7 +131,7 @@ def ensure(root:Path,kind:str,log=print):
                     random_intercept_variance=sigma[0,0],random_condition_variance=sigma[1,1],random_covariance=sigma[0,1],
                     optimizer='BFGS; stable adaptive Gauss-Hermite cumulative-logit likelihood with adaptive-transformation derivatives',
                     optimizer_success=diag['success'],optimizer_message=diag['message'],
-                    fallback_reason='Original ordinal numerical optimizer/Hessian failed; retained original model with a stable likelihood implementation',
+                    fallback_reason='Ordinal optimizer/Hessian failure. Estimated the specified model with a stable likelihood implementation.',
                     negative_log_likelihood=diag['negative_log_likelihood'])
     pd.DataFrame([diagnostic]).to_csv(root/'outputs/tables'/f'{name}_stable_diagnostics.csv',index=False,encoding='utf-8-sig')
     pd.DataFrame(traces).to_csv(root/'outputs/tables'/f'{name}_quadrature_checks.csv',index=False,encoding='utf-8-sig')

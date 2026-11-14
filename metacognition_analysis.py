@@ -1,4 +1,4 @@
-"""Second-revision metrics and direct extensions of the original AUC analyses."""
+"""Participant-level metacognitive measures, condition contrasts, and scanpath associations."""
 from __future__ import annotations
 
 import json
@@ -44,7 +44,7 @@ def metric_values(data: pd.DataFrame, eligible: bool = True) -> tuple[dict, np.n
     record.update(fit)
     if 'relative_criteria' in record:
         record['relative_criteria'] = json.dumps(record['relative_criteria'])
-    # Original public-package convention: constant confidence is undefined.
+    # Analysis convention: constant confidence is treated as undefined.
     if nratings >= 2 and np.unique(correct).size == 2:
         record['auc'] = sd.calculate_auc2_mannwhitney(c, correct.astype(int))
         record['expected_auc'] = sd.calculate_expected_auc_sdt(a, b)
@@ -179,7 +179,7 @@ def extend_summary(pipeline, trial, summary, qc):
 
 
 def selected_scanpath_contrasts(dsm, duration_rates, seed):
-    """Use the first-revision bootstrap seed and contrast order for each metric."""
+    """Bootstrap selected contrasts with a fixed seed and p-value/dyad ordering."""
     intervals = []
     selected = dsm[(dsm.representation == 'duration') & (dsm.permutation_p_fdr < .05)]
     for metric, contrasts in selected.groupby('metric', sort=False):
@@ -279,9 +279,9 @@ def coupling_interpretation(pipeline):
                    efficiency_interpretation='This interaction does not estimate meta-d/d or AUC-ratio')
         rows.append(row)
     pipeline.save_csv(pd.DataFrame(rows),'coupling_joint_interpretation.csv')
-    reference=pipeline.ROOT/'reference/first_revision_ordinal_coefficients.csv'
+    reference=pipeline.ROOT/'reference/ordinal_optimizer_reference.csv'
     if reference.exists():
-        first=pd.read_csv(reference)
+        initial=pd.read_csv(reference)
         columns=['model','term','odds_ratio','ci_low','ci_high','p_value']
-        comparison=first[columns].merge(co[columns],on=['model','term'],validate='one_to_one',suffixes=('_first_revision','_second_revision'))
-        pipeline.save_csv(comparison,'ordinal_first_second_revision_comparison.csv')
+        comparison=initial[columns].merge(co[columns],on=['model','term'],validate='one_to_one',suffixes=('_initial_optimizer','_stable_likelihood'))
+        pipeline.save_csv(comparison,'ordinal_optimizer_comparison.csv')

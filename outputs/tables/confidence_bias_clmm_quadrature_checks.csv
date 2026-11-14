@@ -1,4 +1,4 @@
 ﻿kind,random_dimension,nodes,nll,max_gradient,score_discrepancy,min_hessian_eigenvalue,purpose,maximum_difference_in_standard_errors
 bias,2,15,23917.276030429846,3.105254379960907e-05,3.299391101286376e-05,17.408089383211,,
 bias,2,21,23917.270423248043,3.260814706979889e-05,3.297627619881685e-05,,quadrature-order parameter validation; covariance from primary fit,7.868014895786897e-05
-bias,2,1,23923.24940735314,3.309112106848985e-05,3.339285908084363e-05,17.553369999011313,primary; original first-revision Laplace approximation,
+bias,2,1,23923.24940735314,3.309112106848985e-05,3.339285908084363e-05,17.553369999011313,Primary Laplace approximation with one quadrature node per dimension,

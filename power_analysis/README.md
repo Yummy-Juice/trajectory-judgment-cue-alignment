@@ -1,8 +1,8 @@
 # Sample-size and power analysis module
 
-This module contains a revision-stage evaluation of participant-level design sensitivity and hypothetical sample-size requirements. All G*Power results were obtained from the native **G*Power 3.1.9.7 for Windows** application on 5 November 2026.
+This module evaluates participant-level design sensitivity and hypothetical sample-size requirements. All G*Power results were obtained from the native **G*Power 3.1.9.7 for Windows** application on 5 November 2026.
 
-This document includes reproduction commands, assumptions, analysis-specific recommendations, and the relationship to the existing mixed-model simulation.
+This document includes reproduction commands, assumptions, analysis-specific recommendations, and the model-specific mixed-effects simulation.
 
 ## Contents
 
@@ -44,24 +44,24 @@ The following G*Power options must be active. The runner checks the native proto
 | --- | --- |
 | `gpower_results.jsonl` | One complete record per scenario, including the requested settings, actual entered fields, native outputs, and protocol text |
 | `gpower_manifest.json` | Software version, expected/completed counts, and execution status |
-| `gpower_sample_sizes.csv` | 165 required-sample-size calculations, including the historical audit |
+| `gpower_sample_sizes.csv` | 165 required-sample-size calculations, including a one-sided paired-test reference scenario |
 | `gpower_sensitivity.csv` | 126 detectable-effect calculations at fixed sample sizes |
-| `endpoint_sample_sizes.csv` | Current endpoint-specific valid sample sizes and retention fractions |
+| `endpoint_sample_sizes.csv` | Endpoint-specific valid sample sizes and retention fractions |
 | `retention_planning.csv` | Future planning extrapolations from required valid participants to expected matched records before endpoint QC |
-| `correlation_sample_sizes.csv` | Current condition-specific correlation sample sizes |
-| `dsm_design_summary.csv` | Current extreme-group sizes and comparison-family counts |
-| `existing_mixed_model_simulation.csv` | Selected fields from the already completed model-based simulation |
+| `correlation_sample_sizes.csv` | Condition-specific correlation sample sizes |
+| `dsm_design_summary.csv` | Extreme-group sizes and comparison-family counts |
+| `model_based_simulation.csv` | Model-based simulation results |
 | `numeric_checks.json` | Input binding checks and independent numerical cross-checks performed for the published run |
 
 CSV files use UTF-8, a header row, one scenario or design unit per row, and explicit effect-size/sample-unit fields. Blank cells indicate fields that do not apply to that test. Sample-size requirements are conditional on the stated effect, alpha, power, distribution, and independence assumptions.
 
 ## 1. Purpose and interpretation
 
-This supplement evaluates the sample sizes required for explicitly assumed effects across the principal participant-level analyses. It also reports the effects detectable at the current valid sample sizes. The evaluation distinguishes participant-level paired comparisons, correlations, continuous associations, independent extreme-group comparisons, and mixed-effects models.
+This supplement evaluates the sample sizes required for explicitly assumed effects across the principal participant-level analyses. It also reports the effects detectable at the endpoint-specific valid sample sizes. The evaluation distinguishes participant-level paired comparisons, correlations, continuous associations, independent extreme-group comparisons, and mixed-effects models.
 
-The native G*Power application executed 291 scenarios: 165 required-N calculations and 126 fixed-N sensitivity calculations. The hypothetical effect grids were specified without substituting the observed effect estimates into a calculation of achieved power. The historical single-test calculation is retained as a separate audit.
+The native G*Power application executed 291 scenarios: 165 required-N calculations and 126 fixed-N sensitivity calculations. The hypothetical effect grids were specified without substituting the observed effect estimates into a calculation of achieved power. A one-sided paired-test reference scenario is included alongside the two-sided planning grid.
 
-G*Power calls the sample-size-solving procedure “A priori.” All calculations in this module were performed during revision. They evaluate the completed design and inform future replication planning; they do not establish the timing or numerical basis of an earlier collection decision.
+G*Power calls the sample-size-solving procedure “A priori.” Required-N calculations use hypothetical effects, and fixed-N calculations evaluate design sensitivity at the specified sample sizes. These exploratory calculations also inform future replication planning.
 
 ## 2. Statistical units and available samples
 
@@ -78,7 +78,7 @@ There are 393 matched main-sample records, with 72 formal trials per participant
 
 The confidence-count eligibility count of 351 is distinguished from the finite paired AUC and MLE counts. Sample sizes for correlations are condition-specific: AUC/AUC-ratio use 290 and 272 participants; meta-d′/M-ratio use 287 and 263. Continuous sequence associations use 234–257 participants. Extreme-group comparisons use approximately 59–64 participants in each selected group.
 
-Sources are the existing aggregate analysis tables. The exported [endpoint sample table](../outputs/power_analysis/endpoint_sample_sizes.csv), [correlation sample table](../outputs/power_analysis/correlation_sample_sizes.csv), and [DSM design table](../outputs/power_analysis/dsm_design_summary.csv) identify the relevant analysis units.
+Sample sizes and retention fractions come from the aggregate analysis tables. The exported [endpoint sample table](../outputs/power_analysis/endpoint_sample_sizes.csv), [correlation sample table](../outputs/power_analysis/correlation_sample_sizes.csv), and [DSM design table](../outputs/power_analysis/dsm_design_summary.csv) identify the relevant analysis units.
 
 ## 3. Planning assumptions and multiplicity
 
@@ -109,8 +109,8 @@ For example, at alpha = .005 the paired dz = .20 requirement increases to 337/42
 | Spearman correlations | Pearson table as a reference | A rank-correlation-specific design would require its own distributional evaluation |
 | Continuous sequence associations with HC3 uncertainty | One-predictor regression coefficient benchmark | Classical residual assumptions; HC3 power is not encoded |
 | Extreme-group DSM | Independent-group benchmark and actual-group-size sensitivity | Selected group participants; permutation selection and FDR require separate simulation |
-| Behavioral GLMM/LMM, ordinal CLMM and AOI mixed models | Participant-level benchmarks plus model-specific simulation | Full random structures require simulation of the relevant model; the existing simulation covers the confidence–accuracy GLMM |
-| meta-d′/M-ratio participant-level comparisons | Paired benchmark plus existing 36-trial recovery | Participant count and within-participant trial precision are separate design dimensions |
+| Behavioral GLMM/LMM, ordinal CLMM and AOI mixed models | Participant-level benchmarks plus model-specific simulation | Full random structures require simulation of the relevant model; the model-specific simulation covers the confidence–accuracy GLMM |
+| meta-d′/M-ratio participant-level comparisons | Paired benchmark plus 36-trial parameter recovery | Participant count and within-participant trial precision are separate design dimensions |
 | Leave-one-participant-out stability | Underlying endpoint's analysis sample | This diagnostic does not define an additional independent recruitment target |
 
 ## 4. Paired condition differences
@@ -126,7 +126,7 @@ G*Power settings: `t tests` → `Means: Difference between two dependent means (
 | .30 | 90 | 119 |
 | .50 | 34 | 44 |
 
-These rows use alpha = .05. The historical one-sided dz = .50, alpha = .05, power = .80 audit yields N = 27, with actual power .8118316. Its effect and tail assumptions differ from the expanded two-sided evaluation.
+These rows use alpha = .05. The one-sided dz = .50, alpha = .05, power = .80 reference scenario yields N = 27, with actual power .8118316. Its effect and tail assumptions differ from the two-sided planning grid.
 
 For fixed-N sensitivity, the same two-sided procedure gives:
 
@@ -144,7 +144,7 @@ Thus, the behavioral sample supports an 80%-power benchmark close to dz = .15; t
 
 The Wilcoxon Normal-location-shift benchmark requires N = 208/278 for dz = .20 at 80%/90% power and alpha = .05. G*Power uses an asymptotic relative-efficiency calculation. This is a distribution-specific reference for the rank robustness check.
 
-Applying paired-difference planning to a ratio index evaluates a group mean contrast under its assumed difference distribution. Individual meta-d′ and M-ratio estimation precision also depends on the number and distribution of trials. The existing 36-trial parameter-recovery and confidence-binning analyses provide complementary evidence for that dimension of the design.
+Applying paired-difference planning to a ratio index evaluates a group mean contrast under its assumed difference distribution. Individual meta-d′ and M-ratio estimation precision also depends on the number and distribution of trials. The 36-trial parameter-recovery and confidence-binning analyses provide complementary evidence for that dimension of the design.
 
 ## 5. Correlations and continuous associations
 
@@ -161,7 +161,7 @@ G*Power settings: `Exact` → `Correlation: Bivariate normal model`; Tail(s) = T
 
 These rows use alpha = .05. The condition-specific correlation samples of 263–290 exceed the .20-effect, 90%-power reference of 258. The weaker r = .15 planning scenario requires 346 valid participants for 80% power. The correlation assumptions are independent participants and bivariate-normal Pearson sampling; they provide a reference for the separately reported Spearman analyses.
 
-The current continuous sequence association model has one metric predictor (`rate ~ metric`, using HC3 robust uncertainty). A classical coefficient-test planning benchmark uses `F tests` → `Linear multiple regression: Fixed model, R² increase`; one tested predictor and one total predictor.
+The continuous sequence association model has one metric predictor (`rate ~ metric`, using HC3 robust uncertainty). A classical coefficient-test planning benchmark uses `F tests` → `Linear multiple regression: Fixed model, R² increase`; one tested predictor and one total predictor.
 
 | Assumed f² | Required valid N, 80% power | Required valid N, 90% power |
 | --- | ---: | ---: |
@@ -184,20 +184,20 @@ G*Power settings: `t tests` → `Means: Difference between two independent means
 
 These rows use alpha = .05. They apply to the participants actually entering the two selected groups. Strict upper/lower quartile selection retains at most about half of the eligible continuous sample, with further differences possible because of ties and sequence QC. Consequently, a total-group requirement of 128 cannot be interpreted as 128 initial matched records.
 
-The actual group sizes are 59–64 per group. Under the classical unadjusted model, these samples are close to the d = .50, 80%-power reference. The published tables also include alpha = .05/16 and .05/64 scenarios and the exact current unequal group sizes. The study's normalized-rate permutation tests, group selection, and BH-FDR procedure require design-specific simulation to assess their joint power; the independent t calculations provide a reference scale. These sequence findings retain their exploratory interpretation.
+The actual group sizes are 59–64 per group. Under the classical unadjusted model, these samples are close to the d = .50, 80%-power reference. The published tables also include alpha = .05/16 and .05/64 scenarios and the endpoint-specific unequal group sizes. The study's normalized-rate permutation tests, group selection, and BH-FDR procedure require design-specific simulation to assess their joint power; the independent t calculations provide a reference scale. These sequence findings retain their exploratory interpretation.
 
 ## 7. Mixed-effects models and the logistic reference
 
 The participant-level paired and fixed-design calculations address specified simpler contrasts. The trial-level GLMMs, LMMs, ordinal CLMMs, and repeated AOI models include participant dependence and random effects. G*Power's ordinary regression modules do not encode their full design.
 
-The existing simulation of the confidence–accuracy GLMM retains the actual valid trial design, fixed nuisance effects, and participant random-effect covariance. Every replicate generates new participant random effects and binary responses, followed by a refit using the same model specification.
+The confidence–accuracy GLMM simulation retains the actual valid trial design, fixed nuisance effects, and participant random-effect covariance. Every replicate generates new participant random effects and binary responses, followed by a refit using the same model specification.
 
 | True condition-by-confidence OR | Participants | Valid trials | Replicates | Detection proportion | Monte Carlo 95% interval |
 | --- | ---: | ---: | ---: | ---: | --- |
 | 1.00 | 354 | 24,615 | 100 | .02 | [.006, .070] |
 | .90 | 354 | 24,615 | 100 | .90 | [.826, .945] |
 
-Both scenarios have 100 usable fits. These results evaluate one model and one actual sample size; they do not establish a minimum N across alternative recruitment sizes or guarantee equal power for other mixed-model terms. The existing simulation rows are provided in [the model-simulation extract](../outputs/power_analysis/existing_mixed_model_simulation.csv).
+Both scenarios have 100 usable fits. These results evaluate one model and one actual sample size; they do not establish a minimum N across alternative recruitment sizes or guarantee equal power for other mixed-model terms. The simulation results are provided in [the model-simulation extract](../outputs/power_analysis/model_based_simulation.csv).
 
 For transparency, the module also supplies 12 independent logistic-regression reference calculations. With a standard-normal predictor, null success probability .65, OR = .90, other-predictor R² = 0, alpha = .05, and the Demidenko variance-corrected z procedure, G*Power requires **3,123 independent binary observations** for 80% power and **4,178** for 90% power. These counts are not participant requirements for the clustered trial-level GLMM and must not be divided by 72 to obtain such a requirement.
 
@@ -214,7 +214,7 @@ The required N tables concern valid analysis participants. The retention table a
 | meta-d′ or M-ratio | 199 / 265 | 317 / 422 |
 | Primary eye sample benchmark | 199 / 265 | 222 / 296 |
 
-These rows use alpha = .05 and assume the same endpoint retention in a future study. They are expected-count extrapolations, not assurances that a fixed initial count will yield the target valid N. They concern matched records before endpoint QC. The values do not establish an earlier recruitment rationale. For dz = .15, the finite AUC and MLE retention assumptions imply substantially larger starting matched samples; all scenarios appear in the CSV.
+These rows use alpha = .05 and assume the same endpoint retention in a future study. They are expected-count extrapolations, not assurances that a fixed initial count will yield the target valid N. They concern matched records before endpoint QC. For dz = .15, the finite AUC and MLE retention assumptions imply substantially larger starting matched samples; all scenarios appear in the CSV.
 
 The completed design therefore supports different levels of sensitivity across analyses. Precision, effect magnitude, uncertainty, multiplicity, and estimation reliability remain part of the interpretation alongside p values.
 
