@@ -6,14 +6,7 @@ This package contains 393 matched main-sample behavioral/eye-tracking records an
 
 Citation metadata are in `CITATION.cff`. Code uses the MIT License (`LICENSE-CODE`), and data and derived outputs use CC BY 4.0 (`LICENSE-DATA`).
 
-Excel workbooks are stored through Git Large File Storage (Git LFS). Install Git LFS and obtain the complete working copy with:
-
-```text
-git lfs install
-git clone https://github.com/Yummy-Juice/trajectory-judgment-cue-alignment.git
-cd trajectory-judgment-cue-alignment
-git lfs pull
-```
+Data, code, and results are available through the [anonymous repository](https://anonymous.4open.science/r/trajectory-judgment-cue-alignment-5755/). Download the files and preserve the directory structure shown below. Run the analysis commands from the package root.
 
 ## Reproduce the analyses
 
